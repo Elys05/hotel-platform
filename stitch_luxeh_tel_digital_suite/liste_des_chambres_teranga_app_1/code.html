@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teranga - Liste des chambres</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-container": "#1a2b48",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e4e2e2",
+                        "background": "#fbf9f8",
+                        "on-background": "#1b1c1c",
+                        "surface-dim": "#dbd9d9",
+                        "outline-variant": "#c5c6ce",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "secondary": "#705b3e",
+                        "secondary-fixed-dim": "#dec29f",
+                        "on-tertiary-container": "#93928e",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#b6c7eb",
+                        "outline": "#75777e",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-fixed": "#fbdeb9",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#766143",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#271903",
+                        "surface-container-low": "#f5f3f3",
+                        "on-primary-container": "#8293b5",
+                        "on-primary-fixed-variant": "#374765",
+                        "surface": "#fbf9f8",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "on-primary-fixed": "#081b38",
+                        "secondary-container": "#fbdeb9",
+                        "on-secondary-fixed-variant": "#564428",
+                        "tertiary-container": "#2b2b28",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-highest": "#e4e2e2",
+                        "primary": "#031632",
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "surface-tint": "#4e5f7e",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#303030",
+                        "tertiary": "#171714",
+                        "surface-container": "#efeded",
+                        "primary-fixed": "#d7e2ff",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#fbf9f8",
+                        "on-surface-variant": "#44474d"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    fontFamily: {
+                        "headline-md": ["Playfair Display", "serif"],
+                        "headline-lg-mobile": ["Playfair Display", "serif"],
+                        "headline-lg": ["Playfair Display", "serif"],
+                        "display-lg": ["Playfair Display", "serif"],
+                        "body-md": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"],
+                        "body-lg": ["Inter", "sans-serif"]
+                    },
+                    fontSize: {
+                        "headline-md": ["28px", { lineHeight: "36px", fontWeight: "600" }],
+                        "headline-lg-mobile": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+                        "headline-lg": ["40px", { lineHeight: "48px", fontWeight: "700" }],
+                        "display-lg": ["64px", { lineHeight: "72px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }]
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        body { background-color: #fbf9f8; }
+        .glass-fab {
+            background: rgba(3, 22, 50, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .soft-shadow {
+            box-shadow: 0 12px 32px rgba(3, 22, 50, 0.05);
+        }
+        .bottom-sheet {
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bottom-sheet.open {
+            transform: translateY(0);
+        }
+        .overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24 relative overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-background w-full top-0 sticky z-40">
+<div class="flex items-center justify-between px-margin-mobile h-16 w-full">
+<button aria-label="Retour" class="text-primary hover:bg-surface-container-high transition-colors active:opacity-70 rounded-full p-2 -ml-2">
+<span aria-hidden="true" class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">Teranga</h1>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</div>
+</header>
+<!-- Main Content -->
+<main class="px-margin-mobile pt-4">
+<!-- Date Header (Simulated context) -->
+<div class="mb-6 pb-4 border-b border-surface-container-high">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-1">Dakar, Sénégal</p>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-2">12 - 15 Août</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">2 Adultes, 1 Chambre</p>
+</div>
+<!-- Room List -->
+<div class="flex flex-col gap-6">
+<!-- Room Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden soft-shadow transition-transform active:scale-[0.98]">
+<div class="relative h-48 w-full">
+<img alt="Chambre Deluxe Océan" class="w-full h-full object-cover" data-alt="A luxurious hotel room with a large bed, crisp white linens, and large windows overlooking a serene ocean at sunrise. The decor features warm sand tones, natural wood textures, and minimalist modern furniture. Soft, natural light fills the space, creating a calm and inviting atmosphere. Shot in a high-end architectural photography style." src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<div class="absolute top-4 left-4 bg-secondary-container/80 backdrop-blur-sm px-3 py-1 rounded-full">
+<span class="font-label-sm text-label-sm text-on-secondary-container">Disponible</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Chambre Deluxe Océan</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Vue imprenable sur l'océan Atlantique, lit King size, salle de bain en marbre avec baignoire sur pied. Accès exclusif au lounge.</p>
+<div class="flex justify-between items-end mt-4 pt-4 border-t border-surface-container-low">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant line-through">180 000 FCFA</p>
+<p class="font-headline-md text-headline-md text-primary">150 000 FCFA<span class="font-body-md text-body-md text-on-surface-variant text-sm font-normal">/nuit</span></p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-sm text-label-sm hover:bg-primary-fixed-variant transition-colors">Réserver</button>
+</div>
+</div>
+</article>
+<!-- Room Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden soft-shadow transition-transform active:scale-[0.98]">
+<div class="relative h-48 w-full">
+<img alt="Suite Signature Teranga" class="w-full h-full object-cover" data-alt="An elegant suite in a premium hotel featuring a separate living area with plush seating, warm earthy tones, and contemporary African art on the walls. Large floor-to-ceiling windows show a lush tropical garden outside. The lighting is soft and ambient, highlighting the rich textures of the fabrics and wood finishes. A highly professional interior shot." src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<div class="absolute top-4 left-4 bg-secondary-container/80 backdrop-blur-sm px-3 py-1 rounded-full">
+<span class="font-label-sm text-label-sm text-on-secondary-container">Suite</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Suite Signature Teranga</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Espace de vie séparé, décoration artisanale locale, terrasse privée donnant sur les jardins tropicaux. Service de majordome inclus.</p>
+<div class="flex justify-between items-end mt-4 pt-4 border-t border-surface-container-low">
+<div>
+<p class="font-headline-md text-headline-md text-primary">250 000 FCFA<span class="font-body-md text-body-md text-on-surface-variant text-sm font-normal">/nuit</span></p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-sm text-label-sm hover:bg-primary-fixed-variant transition-colors">Réserver</button>
+</div>
+</div>
+</article>
+<!-- Room Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden soft-shadow transition-transform active:scale-[0.98]">
+<div class="relative h-48 w-full">
+<img alt="Chambre Standard Confort" class="w-full h-full object-cover" data-alt="A cozy, minimalist hotel room designed with warm beige walls and natural materials. A comfortable queen-sized bed with luxurious linens sits next to a large window revealing a bright city view. The room is styled with subtle, modern aesthetics and gentle natural light. Shot with a focus on tranquility and comfort." src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<div class="absolute top-4 left-4 bg-surface-container-high/80 backdrop-blur-sm px-3 py-1 rounded-full">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Dernière chambre</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Chambre Standard Confort</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Design épuré et chaleureux, idéale pour les courts séjours. Lit Queen</p></div></article></div></main></body></html>

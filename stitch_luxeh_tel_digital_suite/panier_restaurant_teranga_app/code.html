@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mon Panier - Teranga Restaurant</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#1a2b48",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e4e2e2",
+                        "background": "#fbf9f8",
+                        "on-background": "#1b1c1c",
+                        "surface-dim": "#dbd9d9",
+                        "outline-variant": "#c5c6ce",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "secondary": "#705b3e",
+                        "secondary-fixed-dim": "#dec29f",
+                        "on-tertiary-container": "#93928e",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#b6c7eb",
+                        "outline": "#75777e",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-fixed": "#fbdeb9",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#766143",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#271903",
+                        "surface-container-low": "#f5f3f3",
+                        "on-primary-container": "#8293b5",
+                        "on-primary-fixed-variant": "#374765",
+                        "surface": "#fbf9f8",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "on-primary-fixed": "#081b38",
+                        "secondary-container": "#fbdeb9",
+                        "on-secondary-fixed-variant": "#564428",
+                        "tertiary-container": "#2b2b28",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-highest": "#e4e2e2",
+                        "primary": "#031632",
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "surface-tint": "#4e5f7e",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#303030",
+                        "tertiary": "#171714",
+                        "surface-container": "#efeded",
+                        "primary-fixed": "#d7e2ff",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#fbf9f8",
+                        "on-surface-variant": "#44474d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "fontWeight": "700" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #c5c6ce;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col pt-safe pb-32">
+<!-- Header (Simplified for task-focused page) -->
+<header class="sticky top-0 z-40 bg-surface/80 backdrop-blur-md px-margin-mobile py-4 flex items-center justify-between border-b border-outline-variant/20 shadow-sm">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant/50">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">Mon Panier</h1>
+</div>
+</header>
+<main class="flex-grow px-margin-mobile py-6 flex flex-col gap-8 max-w-[600px] mx-auto w-full">
+<!-- Order Items -->
+<section class="flex flex-col gap-6">
+<h2 class="font-body-lg text-body-lg text-on-surface font-semibold">Articles (2)</h2>
+<div class="flex flex-col gap-4">
+<!-- Item 1 -->
+<article class="flex gap-4 p-4 rounded-xl bg-surface-container-lowest shadow-[0_8px_24px_rgba(3,22,50,0.04)] border border-outline-variant/20 relative overflow-hidden group">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0">
+<img alt="Thieboudienne Royale" class="w-full h-full object-cover" data-alt="A beautifully plated portion of Thieboudienne, the traditional Senegalese fish and rice dish. It is served in an artisanal ceramic bowl, garnished with vibrant vegetables like carrots, cassava, and eggplant. The food photography is high-end, top-down view, set on a warm, earthy textured table with soft, natural lighting highlighting the rich, savory colors of the dish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4PZOTTTYeXx1Z-SJ142F_jB27QsK5jpzsg7FJ02oPTfCKNWVVdTAToXrm9g9b-MA4-UWHPyAmMSBU9fOBmVpmJu5l_V6lhVmrOZSRWHmoqS1DHS6Va2EjU5ZBwF8tmKPojIXacr-Q9VbQCvujO-wZ85fRC_UxenPjnuEE-C8o4417MGb2PUaYKxj5kBaiSCwZViSG9AzB4Tv35hZb6yNqQ1ACUG2T6QaYBTyorsw1woaP27yRQT-j"/>
+</div>
+<div class="flex flex-col flex-grow justify-between py-1">
+<div>
+<div class="flex justify-between items-start gap-2">
+<h3 class="font-body-md text-body-md font-semibold text-primary">Thieboudienne Royale</h3>
+<button aria-label="Supprimer l'article" class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Poisson, riz rouge, légumes de saison</p>
+</div>
+<div class="flex items-center justify-between mt-3">
+<span class="font-body-md text-body-md font-semibold">18 000 FCFA</span>
+<div class="flex items-center gap-3 bg-surface-container-low rounded-full px-2 py-1 border border-outline-variant/30">
+<button aria-label="Diminuer la quantité" class="w-6 h-6 flex items-center justify-center text-primary rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<span class="font-body-md text-body-md font-semibold w-4 text-center">1</span>
+<button aria-label="Augmenter la quantité" class="w-6 h-6 flex items-center justify-center text-primary rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Item 2 -->
+<article class="flex gap-4 p-4 rounded-xl bg-surface-container-lowest shadow-[0_8px_24px_rgba(3,22,50,0.04)] border border-outline-variant/20 relative overflow-hidden group">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0">
+<img alt="Jus de Bissap" class="w-full h-full object-cover" data-alt="A tall, elegant glass filled with deep ruby-red Jus de Bissap (hibiscus juice) over ice. Condensation drips down the side of the glass. A sprig of fresh mint and a thin slice of lime garnish the rim. The background is a soft, out-of-focus modern restaurant setting with warm sand tones and subtle lighting, creating a refreshing and luxurious beverage presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1H2Z2GTTlRLYuVJcuYSd_DkIjQW2MG8dpgxvCi5YUa6rG8LGOPJuL4YMiIn1EC-JZCGqlFKfBA5RV6mtPysdKPr86ujmL-GZ-xT9vqHRoUSHPx0MeU1pJMuooln9LdogLiOuOIj23yclHix4lV7_2McDgZy-2621jrMnpSq-f3RCXwUOQav_pEljyp3qPkDKHsVYG4FmHe-qByj6HPMqcc_MCxSxaEsjxve_U3IKy-rdA3C54f3TP"/>
+</div>
+<div class="flex flex-col flex-grow justify-between py-1">
+<div>
+<div class="flex justify-between items-start gap-2">
+<h3 class="font-body-md text-body-md font-semibold text-primary">Jus de Bissap Frais</h3>
+<button aria-label="Supprimer l'article" class="text-outline hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Fleur d'hibiscus, menthe douce</p>
+</div>
+<div class="flex items-center justify-between mt-3">
+<span class="font-body-md text-body-md font-semibold">6 500 FCFA</span>
+<div class="flex items-center gap-3 bg-surface-container-low rounded-full px-2 py-1 border border-outline-variant/30">
+<button aria-label="Diminuer la quantité" class="w-6 h-6 flex items-center justify-center text-primary rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<span class="font-body-md text-body-md font-semibold w-4 text-center">2</span>
+<button aria-label="Augmenter la quantité" class="w-6 h-6 flex items-center justify-center text-primary rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<hr class="border-outline-variant/20"/>
+<!-- Delivery Location -->
+<section class="flex flex-col gap-4">
+<h2 class="font-body-lg text-body-lg text-on-surface font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+                Lieu de service
+            </h2>
+<div class="grid grid-cols-1 gap-3">
+<label class="flex items-center justify-between p-4 rounded-xl border border-outline-variant/30 bg-surface-container-lowest cursor-pointer hover:border-primary transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">restaurant</span>
+<span class="font-body-md text-body-md">En salle (Restaurant)</span>
+</div>
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="delivery_location" type="radio" value="restaurant"/>
+</label>
+<label class="flex items-center justify-between p-4 rounded-xl border border-outline-variant/30 bg-surface-container-lowest cursor-pointer hover:border-primary transition-colors has-[:checked]:border-primary has-[:checked]:bg-primary/5">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline">concierge</span>
+<span class="font-body-md text-body-md">Retrait à la réception</span>
+</div>
+<input class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="delivery_location" type="radio" value="reception"/>
+</label>
+<label class="flex flex-col p-4 rounded-xl border border-primary bg-primary/5 cursor-pointer transition-colors relative">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary filled-icon">room_service</span>
+<span class="font-body-md text-body-md font-semibold text-primary">Service en chambre</span>
+</div>
+<input checked="" class="w-5 h-5 text-primary focus:ring-primary border-outline-variant" name="delivery_location" type="radio" value="room"/>
+</div>
+<!-- Room Number Input (Visible when Room is selected) -->
+<div class="mt-4 pt-4 border-t border-outline-variant/20 flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant" for="room_number">Numéro de chambre</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/50 rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-all outline-none" id="room_number" placeholder="Ex: 101" type="text" value="402"/>
+</div>
+</label>
+</div>
+</section>
+<hr class="border-outline-variant/20"/>
+<!-- Summary Details -->
+<section class="flex flex-col gap-3 pb-8">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Sous-total</span>
+<span class="font-body-md text-body-md">24 500 FCFA</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Frais de service (Chambre)</span>
+<span class="font-body-md text-body-md">1 500 FCFA</span>
+</div>
+<div class="flex justify-between items-center pt-3 border-t border-outline-variant/20 mt-1">
+<span class="font-body-lg text-body-lg font-semibold text-primary">Total</span>
+<span class="font-headline-md text-headline-md text-primary tracking-tight">26 000 FCFA</span>
+</div>
+</section>
+</main>
+<!-- Fixed Bottom Bar -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/95 backdrop-blur-md border-t border-outline-variant/30 shadow-[0_-8px_32px_rgba(3,22,50,0.08)] px-margin-mobile py-4 pb-safe z-50">
+<div class="max-w-[600px] mx-auto flex items-center justify-between gap-4">
+<div class="flex flex-col hidden sm:flex">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total à payer</span>
+<span class="font-body-lg text-body-lg font-bold text-primary">26 000 FCFA</span>
+</div>
+<button class="flex-grow sm:flex-grow-0 w-full sm:w-auto bg-primary text-on-primary font-body-md text-body-md font-semibold py-4 px-8 rounded-full hover:bg-primary/90 transition-colors shadow-md flex justify-center items-center gap-2">
+                Commander
+                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

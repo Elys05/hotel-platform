@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teranga Admin - Gestion des Réservations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#1a2b48",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e4e2e2",
+                        "background": "#fbf9f8",
+                        "on-background": "#1b1c1c",
+                        "surface-dim": "#dbd9d9",
+                        "outline-variant": "#c5c6ce",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "secondary": "#705b3e",
+                        "secondary-fixed-dim": "#dec29f",
+                        "on-tertiary-container": "#93928e",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#b6c7eb",
+                        "outline": "#75777e",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-fixed": "#fbdeb9",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#766143",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#271903",
+                        "surface-container-low": "#f5f3f3",
+                        "on-primary-container": "#8293b5",
+                        "on-primary-fixed-variant": "#374765",
+                        "surface": "#fbf9f8",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "on-primary-fixed": "#081b38",
+                        "secondary-container": "#fbdeb9",
+                        "on-secondary-fixed-variant": "#564428",
+                        "tertiary-container": "#2b2b28",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-highest": "#e4e2e2",
+                        "primary": "#031632",
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "surface-tint": "#4e5f7e",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#303030",
+                        "tertiary": "#171714",
+                        "surface-container": "#efeded",
+                        "primary-fixed": "#d7e2ff",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#fbf9f8",
+                        "on-surface-variant": "#44474d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "fontWeight": "700" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Ambient shadows for dark mode tables */
+        .admin-table-row {
+            box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-primary dark:bg-primary text-on-primary font-body-md min-h-screen flex">
+<!-- SideNavBar (from JSON) -->
+<aside class="h-screen w-64 flex-col fixed left-0 top-0 border-r border-white/10 shadow-xl bg-primary dark:bg-primary hidden md:flex z-50">
+<div class="flex flex-col h-full py-6 px-4">
+<div class="mb-8">
+<h1 class="font-headline-md text-headline-md text-on-primary">Teranga Admin</h1>
+<p class="font-label-sm text-label-sm text-on-primary/70">Property Management</p>
+</div>
+<button class="w-full bg-secondary-fixed text-on-secondary-fixed py-2 rounded-lg font-label-sm text-label-sm mb-6 flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Booking
+            </button>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 py-2 px-3 text-on-primary-container/70 hover:text-on-primary mx-2 rounded-lg hover:bg-primary-container/50 transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<!-- ACTIVE STATE: Bookings -->
+<a class="flex items-center gap-3 py-2 px-3 bg-primary-container text-on-primary-container rounded-lg mx-2 duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined fill">calendar_month</span>
+<span class="font-body-md text-body-md font-semibold">Bookings</span>
+</a>
+<a class="flex items-center gap-3 py-2 px-3 text-on-primary-container/70 hover:text-on-primary mx-2 rounded-lg hover:bg-primary-container/50 transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined">bed</span>
+<span class="font-body-md text-body-md">Inventory</span>
+</a>
+<a class="flex items-center gap-3 py-2 px-3 text-on-primary-container/70 hover:text-on-primary mx-2 rounded-lg hover:bg-primary-container/50 transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-body-md text-body-md">Kitchen</span>
+</a>
+<a class="flex items-center gap-3 py-2 px-3 text-on-primary-container/70 hover:text-on-primary mx-2 rounded-lg hover:bg-primary-container/50 transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 py-2 px-3 text-on-primary-container/70 hover:text-on-primary mx-2 rounded-lg hover:bg-primary-container/50 transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-white/10 flex flex-col gap-2">
+<a class="flex items-center gap-3 py-2 px-3 text-on-primary-container/70 hover:text-on-primary mx-2 rounded-lg hover:bg-primary-container/50 transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+<a class="flex items-center gap-3 py-2 px-3 text-on-primary-container/70 hover:text-on-primary mx-2 rounded-lg hover:bg-primary-container/50 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</div>
+<div class="mt-6 flex items-center gap-3 px-3">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="A small, circular avatar portrait of a professional African hotel manager in a dark, minimalist setting. Lighting is cinematic and soft." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA91Ua6Rb7qns96MqRLNs3s_MZuP9h7sx8Ju07dSJsOnFByBwdUVbKpigERRzOKgAMSTtVw515FZAfXdIzA62DQm-f3RvZ16b5WB35KqJe1iOAH76HZBlsSf2Q_qUALL4hjlAG5OaKUR_6FZZ6LXExXUNL6A7jgQ2B68T2cfDS4eKpe_ncfH4rXko-XuoIEYEwT6l7UHPWaLzeZBLPqbNoufQSohutmEBDml0O9036djxueytrO54xC"/>
+<span class="font-label-sm text-label-sm text-on-primary">Admin User</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-margin-mobile md:p-margin-desktop min-h-screen max-w-container-max mx-auto w-full">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-primary mb-2">Gestion des Réservations</h2>
+<p class="font-body-md text-body-md text-on-primary/70">Gérez les arrivées, départs et statuts de paiement.</p>
+</div>
+<!-- View Toggle -->
+<div class="flex items-center bg-primary-container/50 rounded-lg p-1 border border-white/10">
+<button class="px-4 py-2 rounded-md bg-primary-container text-on-primary font-label-sm text-label-sm flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">list</span>
+                    Liste
+                </button>
+<button class="px-4 py-2 rounded-md text-on-primary/50 hover:text-on-primary font-label-sm text-label-sm flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]">calendar_view_month</span>
+                    Calendrier
+                </button>
+</div>
+</header>
+<!-- Filters & Search Bar -->
+<div class="flex flex-col lg:flex-row gap-4 mb-8 bg-primary-container/30 p-4 rounded-xl border border-white/5 backdrop-blur-sm">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-primary/50">search</span>
+<input class="w-full bg-primary-container/50 border border-white/10 rounded-lg py-3 pl-10 pr-4 text-on-primary font-body-md focus:outline-none focus:border-secondary-fixed/50 transition-colors placeholder:text-on-primary/30" placeholder="Rechercher par nom de client, numéro de chambre..." type="text"/>
+</div>
+<div class="flex gap-4">
+<select class="bg-primary-container/50 border border-white/10 rounded-lg py-3 px-4 text-on-primary font-body-md focus:outline-none focus:border-secondary-fixed/50 appearance-none pr-10 relative">
+<option value="">Tous les statuts</option>
+<option value="confirmed">Confirmé</option>
+<option value="pending">En attente</option>
+<option value="cancelled">Annulé</option>
+</select>
+<button class="bg-primary-container/50 border border-white/10 rounded-lg py-3 px-4 text-on-primary font-body-md flex items-center gap-2 hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+                    Plus de filtres
+                </button>
+</div>
+</div>
+<!-- Data Table (Bento/Card-like structure for rows) -->
+<div class="w-full overflow-x-auto rounded-xl border border-white/10 bg-primary-container/20">
+<table class="w-full text-left whitespace-nowrap">
+<thead class="bg-primary-container/40 border-b border-white/10">
+<tr>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-primary/60 uppercase tracking-wider">Client</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-primary/60 uppercase tracking-wider">Chambre</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-primary/60 uppercase tracking-wider">Arrivée / Départ</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-primary/60 uppercase tracking-wider text-right">Montant</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-primary/60 uppercase tracking-wider text-center">Statut</th>
+<th class="px-6 py-4 font-label-sm text-label-sm text-on-primary/60 uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-white/5 font-body-md text-body-md">
+<!-- Row 1 -->
+<tr class="hover:bg-primary-container/30 transition-colors admin-table-row">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed-dim/20 flex items-center justify-center text-secondary-fixed">
+<span class="font-headline-md text-body-md">AD</span>
+</div>
+<div>
+<p class="text-on-primary font-semibold">Amadou Diallo</p>
+<p class="text-on-primary/50 text-sm">amadou.d@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-on-primary">Suite Océan</p>
+<p class="text-on-primary/50 text-sm">2 Adultes</p>
+</td>
+<td class="px-6 py-4">
+<p class="text-on-primary">24 Oct 2024</p>
+<p class="text-on-primary/50 text-sm">28 Oct 2024 (4 nuits)</p>
+</td>
+<td class="px-6 py-4 text-right">
+<p class="text-on-primary font-semibold">480 000 FCFA</p>
+<p class="text-on-primary/50 text-sm">Payé</p>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                Confirmé
+                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-on-primary/50 hover:text-secondary-fixed transition-colors p-2">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary-container/30 transition-colors admin-table-row">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed/10 flex items-center justify-center text-primary-fixed">
+<span class="font-headline-md text-body-md">SF</span>
+</div>
+<div>
+<p class="text-on-primary font-semibold">Sarah Faye</p>
+<p class="text-on-primary/50 text-sm">s.faye@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-on-primary">Chambre Deluxe</p>
+<p class="text-on-primary/50 text-sm">1 Adulte</p>
+</td>
+<td class="px-6 py-4">
+<p class="text-on-primary">25 Oct 2024</p>
+<p class="text-on-primary/50 text-sm">27 Oct 2024 (2 nuits)</p>
+</td>
+<td class="px-6 py-4 text-right">
+<p class="text-on-primary font-semibold">150 000 FCFA</p>
+<p class="text-on-primary/50 text-sm">Acompte payé</p>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                                En attente
+                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-on-primary/50 hover:text-secondary-fixed transition-colors p-2">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary-container/30 transition-colors admin-table-row">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed/10 flex items-center justify-center text-primary-fixed">
+<span class="font-headline-md text-body-md">JN</span>
+</div>
+<div>
+<p class="text-on-primary font-semibold">Jean Ndiaye</p>
+<p class="text-on-primary/50 text-sm">jndiaye@example.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<p class="text-on-primary">Villa Jardin</p>
+<p class="text-on-primary/50 text-sm">4 Adultes, 2 Enfants</p>
+</td>
+<td class="px-6 py-4">
+<p class="text-on-primary">28 Oct 2024</p>
+<p class="text-on-primary/50 text-sm">05 Nov 2024 (8 nuits)</p>
+</td>
+<td class="px-6 py-4 text-right">
+<p class="text-on-primary font-semibold">1 200 000 FCFA</p>
+<p class="text-on-primary/50 text-sm">Payé</p>
+</td>
+<td class="px-6 py-4 text-center">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                Confirmé
+                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-on-primary/50 hover:text-secondary-fixed transition-colors p-2">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="mt-6 flex items-center justify-between">
+<p class="font-label-sm text-label-sm text-on-primary/50">Affichage de 1 à 3 sur 24 réservations</p>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded border border-white/10 flex items-center justify-center text-on-primary/50 hover:bg-primary-container/50 transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-secondary-fixed/20 border border-secondary-fixed/30 text-secondary-fixed flex items-center justify-center font-label-sm">1</button>
+<button class="w-8 h-8 rounded border border-white/10 flex items-center justify-center text-on-primary hover:bg-primary-container/50 transition-colors font-label-sm">2</button>
+<button class="w-8 h-8 rounded border border-white/10 flex items-center justify-center text-on-primary hover:bg-primary-container/50 transition-colors font-label-sm">3</button>
+<button class="w-8 h-8 rounded border border-white/10 flex items-center justify-center text-on-primary hover:bg-primary-container/50 transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

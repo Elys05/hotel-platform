@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teranga Admin - Réservation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-container": "#1a2b48",
+                      "inverse-on-surface": "#f2f0f0",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#e4e2e2",
+                      "background": "#fbf9f8",
+                      "on-background": "#1b1c1c",
+                      "surface-dim": "#dbd9d9",
+                      "outline-variant": "#c5c6ce",
+                      "primary-fixed-dim": "#b6c7eb",
+                      "secondary": "#705b3e",
+                      "secondary-fixed-dim": "#dec29f",
+                      "on-tertiary-container": "#93928e",
+                      "on-tertiary-fixed": "#1c1c19",
+                      "on-secondary": "#ffffff",
+                      "inverse-primary": "#b6c7eb",
+                      "outline": "#75777e",
+                      "on-primary": "#ffffff",
+                      "surface-container-high": "#eae8e7",
+                      "secondary-fixed": "#fbdeb9",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#766143",
+                      "tertiary-fixed": "#e5e2dd",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#271903",
+                      "surface-container-low": "#f5f3f3",
+                      "on-primary-container": "#8293b5",
+                      "on-primary-fixed-variant": "#374765",
+                      "surface": "#fbf9f8",
+                      "on-tertiary-fixed-variant": "#474743",
+                      "on-primary-fixed": "#081b38",
+                      "secondary-container": "#fbdeb9",
+                      "on-secondary-fixed-variant": "#564428",
+                      "tertiary-container": "#2b2b28",
+                      "on-surface": "#1b1c1c",
+                      "surface-container-highest": "#e4e2e2",
+                      "primary": "#031632",
+                      "tertiary-fixed-dim": "#c9c6c2",
+                      "surface-tint": "#4e5f7e",
+                      "error-container": "#ffdad6",
+                      "inverse-surface": "#303030",
+                      "tertiary": "#171714",
+                      "surface-container": "#efeded",
+                      "primary-fixed": "#d7e2ff",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#fbf9f8",
+                      "on-surface-variant": "#44474d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "headline-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "72px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-inverse-surface text-on-primary font-body-md min-h-screen flex">
+<!-- SideNavBar (Shared Component) -->
+<nav class="bg-primary dark:bg-primary h-screen w-64 flex-col fixed left-0 top-0 border-r border-white/10 shadow-xl flex py-6 px-4 z-40 hidden md:flex">
+<div class="font-headline-md text-headline-md text-on-primary mb-8 tracking-tight">Teranga Admin</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 py-3 px-2 text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 transition-colors duration-200 ease-linear rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-2 bg-primary-container text-on-primary-container rounded-lg mx-2 duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span>Bookings</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-2 text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 transition-colors duration-200 ease-linear rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="bed">bed</span>
+<span>Inventory</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-2 text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 transition-colors duration-200 ease-linear rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span>Kitchen</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-2 text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 transition-colors duration-200 ease-linear rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-2 text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 transition-colors duration-200 ease-linear rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</div>
+<button class="bg-secondary text-on-secondary rounded-lg py-3 px-4 font-label-sm text-label-sm w-full mb-6 hover:bg-secondary/90 transition-colors">
+            New Booking
+        </button>
+<div class="flex flex-col gap-2 border-t border-white/10 pt-4">
+<a class="flex items-center gap-3 py-2 px-2 text-on-primary-container/70 hover:text-on-primary transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</a>
+<a class="flex items-center gap-3 py-2 px-2 text-on-primary-container/70 hover:text-on-primary transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-sm text-label-sm">Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 ml-0 md:ml-64 p-margin-mobile md:p-margin-desktop relative">
+<!-- Mock Background Content (Bookings List) to show the overlay effect -->
+<div class="w-full max-w-container-max mx-auto opacity-40 blur-sm pointer-events-none">
+<div class="flex justify-between items-center mb-8">
+<h1 class="font-headline-lg text-headline-lg text-on-primary">Bookings</h1>
+</div>
+<!-- Table Skeleton -->
+<div class="bg-primary border border-white/10 rounded-xl overflow-hidden">
+<div class="p-4 border-b border-white/10 flex gap-4 text-on-primary-container font-label-sm text-label-sm">
+<div class="w-1/4">Guest</div>
+<div class="w-1/4">Dates</div>
+<div class="w-1/4">Room</div>
+<div class="w-1/4">Status</div>
+</div>
+<!-- Rows -->
+<div class="p-4 border-b border-white/10 flex gap-4 items-center bg-primary-container/20">
+<div class="w-1/4">Mme. Ndiaye</div>
+<div class="w-1/4">12-15 Nov</div>
+<div class="w-1/4">Suite Executive</div>
+<div class="w-1/4"><span class="bg-secondary/20 text-secondary-container px-2 py-1 rounded">Pending</span></div>
+</div>
+<div class="p-4 border-b border-white/10 flex gap-4 items-center">
+<div class="w-1/4">Mr. Diallo</div>
+<div class="w-1/4">14-16 Nov</div>
+<div class="w-1/4">Chambre Deluxe</div>
+<div class="w-1/4"><span class="bg-primary-container text-inverse-primary px-2 py-1 rounded">Confirmed</span></div>
+</div>
+</div>
+</div>
+<!-- Slide-over Backdrop -->
+<div class="fixed inset-0 bg-black/60 z-40 transition-opacity backdrop-blur-sm"></div>
+<!-- Slide-over Panel -->
+<div class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-primary border-l border-white/10 shadow-2xl transform transition-transform duration-300 flex flex-col">
+<!-- Header -->
+<div class="flex items-center justify-between px-6 py-6 border-b border-white/10">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-primary">Détails Réservation</h2>
+<p class="font-label-sm text-label-sm text-on-primary-container mt-1">Ref: #BKG-8492</p>
+</div>
+<button class="text-on-primary-container hover:text-on-primary p-2 rounded-full hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- Content Scrollable Area -->
+<div class="flex-1 overflow-y-auto p-6 space-y-8">
+<!-- Client Info Section -->
+<section>
+<h3 class="font-label-sm text-label-sm text-secondary-container uppercase tracking-wider mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="person">person</span> Client
+                    </h3>
+<div class="bg-primary-container/30 rounded-xl p-4 border border-white/5">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-headline-md text-headline-md">
+                                N
+                            </div>
+<div>
+<div class="font-body-lg text-body-lg text-on-primary font-semibold">Mme. Ndiaye</div>
+<div class="font-label-sm text-label-sm text-on-primary-container">Client VIP</div>
+</div>
+</div>
+<div class="space-y-3 font-body-md text-body-md text-on-primary-container">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[18px]" data-icon="mail">mail</span>
+<span>a.ndiaye@example.com</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[18px]" data-icon="phone">phone</span>
+<span>+221 77 000 00 00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Booking Details Section -->
+<section>
+<h3 class="font-label-sm text-label-sm text-secondary-container uppercase tracking-wider mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="bed">bed</span> Séjour
+                    </h3>
+<div class="bg-primary-container/30 rounded-xl p-4 border border-white/5 space-y-4">
+<div class="flex justify-between items-center pb-4 border-b border-white/10">
+<div>
+<div class="font-label-sm text-label-sm text-on-primary-container">Chambre</div>
+<div class="font-body-md text-body-md text-on-primary font-semibold mt-1">Suite Executive</div>
+</div>
+<div class="text-right">
+<div class="font-label-sm text-label-sm text-on-primary-container">Montant</div>
+<div class="font-body-md text-body-md text-secondary-container font-semibold mt-1">360 000 FCFA</div>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<div>
+<div class="font-label-sm text-label-sm text-on-primary-container mb-1">Arrivée</div>
+<div class="flex items-center gap-2 font-body-md text-body-md text-on-primary">
+<span class="material-symbols-outlined text-[18px] text-inverse-primary" data-icon="event_upcoming">event_upcoming</span>
+                                    12 Nov
+                                </div>
+</div>
+<div class="w-8 h-[1px] bg-white/20"></div>
+<div class="text-right">
+<div class="font-label-sm text-label-sm text-on-primary-container mb-1">Départ</div>
+<div class="flex items-center gap-2 font-body-md text-body-md text-on-primary justify-end">
+                                    15 Nov
+                                    <span class="material-symbols-outlined text-[18px] text-inverse-primary" data-icon="event_available">event_available</span>
+</div>
+</div>
+</div>
+<div class="flex justify-center pt-2">
+<div class="bg-surface-tint/20 text-inverse-primary px-3 py-1 rounded-full font-label-sm text-label-sm">
+                                 3 Nuits
+                             </div>
+</div>
+</div>
+</section>
+<!-- Status Timeline Section -->
+<section>
+<h3 class="font-label-sm text-label-sm text-secondary-container uppercase tracking-wider mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="history">history</span> Historique
+                    </h3>
+<div class="relative pl-4 space-y-6 before:absolute before:inset-y-0 before:left-[11px] before:w-[2px] before:bg-white/10">
+<div class="relative">
+<div class="absolute -left-4 top-1 w-3 h-3 bg-secondary rounded-full ring-4 ring-primary"></div>
+<div class="ml-6">
+<div class="font-label-sm text-label-sm text-on-primary-container">Aujourd'hui, 10:42</div>
+<div class="font-body-md text-body-md text-on-primary mt-1">Réservation modifiée</div>
+<div class="font-label-sm text-label-sm text-on-primary-container mt-1">Ajout d'une nuit supplémentaire.</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -left-4 top-1 w-3 h-3 bg-white/20 rounded-full ring-4 ring-primary"></div>
+<div class="ml-6">
+<div class="font-label-sm text-label-sm text-on-primary-container">08 Nov, 14:30</div>
+<div class="font-body-md text-body-md text-on-primary mt-1">Réservation créée via Web</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Actions -->
+<div class="p-6 border-t border-white/10 bg-primary/95 backdrop-blur-sm mt-auto">
+<div class="flex flex-col gap-3">
+<button class="w-full bg-secondary text-on-secondary py-3 rounded-lg font-body-md text-body-md font-semibold hover:bg-secondary/90 transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                        Confirmer
+                    </button>
+<div class="flex gap-3">
+<button class="flex-1 border border-white/20 text-on-primary py-3 rounded-lg font-body-md text-body-md hover:bg-white/5 transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+                            Modifier
+                        </button>
+<button class="flex-1 border border-error/50 text-error-container py-3 rounded-lg font-body-md text-body-md hover:bg-error/10 transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="cancel">cancel</span>
+                            Annuler
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

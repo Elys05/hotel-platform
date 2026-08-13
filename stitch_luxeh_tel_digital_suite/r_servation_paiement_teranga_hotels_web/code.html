@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teranga Hotels - Secure Checkout</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "on-secondary-fixed-variant": "#564428",
+                        "surface-dim": "#dbd9d9",
+                        "outline": "#75777e",
+                        "surface-container-low": "#f5f3f3",
+                        "surface-tint": "#4e5f7e",
+                        "secondary-fixed": "#fbdeb9",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fbf9f8",
+                        "surface-container-highest": "#e4e2e2",
+                        "primary": "#031632",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#271903",
+                        "surface-variant": "#e4e2e2",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "on-background": "#1b1c1c",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-container": "#fbdeb9",
+                        "inverse-primary": "#b6c7eb",
+                        "tertiary": "#171714",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "primary-container": "#1a2b48",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#fbf9f8",
+                        "secondary": "#705b3e",
+                        "on-surface-variant": "#44474d",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#766143",
+                        "on-primary-container": "#8293b5",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-tertiary-container": "#93928e",
+                        "secondary-fixed-dim": "#dec29f",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-primary-fixed-variant": "#374765",
+                        "primary-fixed": "#d7e2ff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#2b2b28",
+                        "on-primary-fixed": "#081b38",
+                        "on-surface": "#1b1c1c",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "surface": "#fbf9f8",
+                        "surface-container": "#efeded",
+                        "outline-variant": "#c5c6ce"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Playfair Display"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<header class="w-full bg-surface-container-lowest border-b border-outline-variant/30 py-4 px-margin-mobile md:px-margin-desktop sticky top-0 z-50">
+<div class="max-w-container-max mx-auto flex justify-between items-center">
+<div class="font-headline-md text-headline-md text-primary tracking-tight">Teranga Hotels</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lock</span>
+                Paiement Sécurisé
+            </div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16">
+<div class="mb-12">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-2">Finaliser la réservation</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Veuillez saisir vos informations pour confirmer votre séjour.</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-gutter relative">
+<div class="w-full lg:w-2/3 flex flex-col gap-10">
+<section class="bg-surface-container-lowest rounded-xl p-6 md:p-10 shadow-[0_24px_48px_rgba(3,22,50,0.03)] border border-outline-variant/20">
+<h2 class="font-headline-md text-headline-md text-primary mb-8 flex items-center gap-3 border-b border-outline-variant/20 pb-4">
+<span class="material-symbols-outlined text-secondary">person</span>
+                        Informations du client
+                    </h2>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Prénom</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg p-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Votre prénom" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Nom</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg p-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Votre nom" type="text"/>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Email</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg p-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="exemple@email.com" type="email"/>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Téléphone</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg p-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="+221 ..." type="tel"/>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Demandes Spéciales (Optionnel)</label>
+<textarea class="w-full bg-surface-bright border border-outline-variant rounded-lg p-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors resize-none" placeholder="Heure d'arrivée, allergies, etc." rows="4"></textarea>
+</div>
+</form>
+</section>
+<section class="bg-surface-container-lowest rounded-xl p-6 md:p-10 shadow-[0_24px_48px_rgba(3,22,50,0.03)] border border-outline-variant/20">
+<h2 class="font-headline-md text-headline-md text-primary mb-8 flex items-center gap-3 border-b border-outline-variant/20 pb-4">
+<span class="material-symbols-outlined text-secondary">payments</span>
+                        Mode de paiement
+                    </h2>
+<div class="flex flex-col sm:flex-row gap-4 mb-8">
+<button class="flex-1 py-4 px-6 rounded-lg border-2 border-primary bg-primary/5 text-primary font-label-sm text-label-sm flex items-center justify-center gap-2 transition-all" id="btn-mobile" onclick="togglePayment('mobile')">
+<span class="material-symbols-outlined">smartphone</span>
+                            Mobile Money
+                        </button>
+<button class="flex-1 py-4 px-6 rounded-lg border border-outline-variant bg-surface text-on-surface-variant font-label-sm text-label-sm flex items-center justify-center gap-2 transition-all hover:bg-surface-container-low" id="btn-card" onclick="togglePayment('card')">
+<span class="material-symbols-outlined">credit_card</span>
+                            Carte Bancaire
+                        </button>
+</div>
+<div class="block animate-[fadeIn_0.3s_ease-out]" id="payment-mobile">
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Sélectionnez votre opérateur de transfert d'argent.</p>
+<div class="grid grid-cols-3 gap-4 mb-6">
+<div class="border border-outline-variant rounded-lg p-4 flex items-center justify-center cursor-pointer hover:border-primary hover:bg-surface-container-low transition-colors h-24 relative overflow-hidden group">
+<div class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="font-label-sm text-label-sm text-on-surface text-center">Orange<br/>Money</span>
+</div>
+<div class="border border-outline-variant rounded-lg p-4 flex items-center justify-center cursor-pointer hover:border-primary hover:bg-surface-container-low transition-colors h-24 relative overflow-hidden group">
+<div class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="font-label-sm text-label-sm text-on-surface text-center">Wave</span>
+</div>
+<div class="border border-outline-variant rounded-lg p-4 flex items-center justify-center cursor-pointer hover:border-primary hover:bg-surface-container-low transition-colors h-24 relative overflow-hidden group">
+<div class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="font-label-sm text-label-sm text-on-surface text-center">Free<br/>Money</span>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Numéro de compte Mobile Money</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg p-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Ex: 77 123 45 67" type="tel"/>
+</div>
+</div>
+<div class="hidden animate-[fadeIn_0.3s_ease-out]" id="payment-card">
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 flex items-center gap-2">
+                            Paiement sécurisé par carte bancaire.
+                            <img class="h-6 ml-auto rounded-sm object-cover" data-alt="A clean, minimalist layout of Visa and Mastercard logos rendered in soft, modern vector style suitable for a luxury e-commerce checkout flow in light mode, emphasizing security and trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ7sWjCTuDLUqJbKJKAncsRwk4V6K3XIgcKNVLKrmurpEpNyQB7HNEbmMFagG5xHXp_AtUxBADV9QP92W-88wfUXEQhl3j9dGAO27qYXZmDzYJ0JhLOC2TtnIjCM28GfukQCF570XsYpLj2JmvLxK_-LWowcWSOi9nQGRmzgq01ilioBHexLKe7QHJNhorw9cy7nlcySXqMq50M0GVZgWf_q9uI13REv0mvWncrLdU8hbyqMG5IbFm"/>
+</p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Numéro de carte</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-outline">credit_card</span>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg p-3 pl-10 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="0000 0000 0000 0000" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Date d'expiration</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg p-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="MM/AA" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">CVC</label>
+<div class="relative">
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg p-3 pr-10 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="123" type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline">help</span>
+</div>
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">Nom sur la carte</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg p-3 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors" placeholder="Nom complet" type="text"/>
+</div>
+</div>
+</div>
+</section>
+</div>
+<aside class="w-full lg:w-1/3">
+<div class="sticky top-24 bg-surface-container-low rounded-xl overflow-hidden shadow-[0_24px_48px_rgba(3,22,50,0.08)]">
+<div class="h-48 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A luxurious executive suite in a high-end West African hotel, featuring warm earthy tones, wooden architectural accents, and a large window flooding the room with soft, bright natural light. The room includes a meticulously made king-size bed with crisp white linens, embodying a minimalist yet highly premium hospitality aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNa0x0781P8teie9Y6WtO2YUKI3sSIDVzb4-dSTcYfurZ2LERhABa6S579ysZhKxOn6d1P-qnxsUCeyxr6RXQ99l9L4UA4qjvblnkvQ3gBO_qaCkpbBObG5sL7rZuYvCwInYf8Y_33sva2yYvtbFmtAIk3u_3q2nzHhiKCJgHLgqM3dCuqAFyFcE4iEizQZo7GPBbhhDB0C5PK9maRxSEtVAX0TiGDrr9DxjaSylO2eAuMGMt7ki6q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<span class="inline-block bg-secondary-container/90 backdrop-blur-sm text-on-secondary-container font-label-sm text-label-sm px-3 py-1 rounded-full mb-2">Suite Exécutive</span>
+<h3 class="font-headline-md text-headline-md text-on-primary">Teranga Dakar</h3>
+</div>
+</div>
+<div class="p-6 md:p-8 flex flex-col gap-6">
+<div class="flex justify-between items-center py-4 border-b border-outline-variant/30">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Arrivée</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold mt-1">12 Oct 2024</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant">arrow_forward</span>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Départ</span>
+<span class="font-body-md text-body-md text-on-surface font-semibold mt-1">15 Oct 2024</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">2 Adultes, 1 Chambre</span>
+</div>
+<div class="bg-surface-bright rounded-lg p-5 border border-outline-variant/20 flex flex-col gap-3">
+<h4 class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider mb-2">Détails du prix</h4>
+<div class="flex justify-between items-center font-body-md text-body-md text-on-surface-variant">
+<span>3 Nuits x 150 000</span>
+<span>450 000 FCFA</span>
+</div>
+<div class="flex justify-between items-center font-body-md text-body-md text-on-surface-variant">
+<span>Taxes de séjour (5%)</span>
+<span>22 500 FCFA</span>
+</div>
+<div class="flex justify-between items-center font-body-md text-body-md text-on-surface-variant">
+<span>Frais de service</span>
+<span>5 000 FCFA</span>
+</div>
+<div class="border-t border-outline-variant/30 mt-3 pt-4 flex justify-between items-end">
+<span class="font-body-md text-body-md text-on-surface font-semibold">Total</span>
+<span class="font-headline-md text-headline-md text-primary tracking-tight">477 500 <span class="text-body-lg font-body-lg ml-1">FCFA</span></span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-on-primary py-4 rounded-full font-label-sm text-label-sm uppercase tracking-widest transition-colors shadow-md mt-4">
+                            Confirmer et Payer
+                        </button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mt-2 flex justify-center items-center gap-1 opacity-70">
+<span class="material-symbols-outlined" style="font-size: 16px;">verified_user</span>
+                            Vos informations sont chiffrées.
+                        </p>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<script>
+        function togglePayment(method) {
+            const btnMobile = document.getElementById('btn-mobile');
+            const btnCard = document.getElementById('btn-card');
+            const panelMobile = document.getElementById('payment-mobile');
+            const panelCard = document.getElementById('payment-card');
+
+            const activeBtnClasses = ['border-2', 'border-primary', 'bg-primary/5', 'text-primary'];
+            const inactiveBtnClasses = ['border', 'border-outline-variant', 'bg-surface', 'text-on-surface-variant', 'hover:bg-surface-container-low'];
+
+            if (method === 'mobile') {
+                panelMobile.classList.remove('hidden');
+                panelMobile.classList.add('block');
+                panelCard.classList.remove('block');
+                panelCard.classList.add('hidden');
+
+                btnMobile.classList.remove(...inactiveBtnClasses);
+                btnMobile.classList.add(...activeBtnClasses);
+                btnCard.classList.remove(...activeBtnClasses);
+                btnCard.classList.add(...inactiveBtnClasses);
+            } else {
+                panelCard.classList.remove('hidden');
+                panelCard.classList.add('block');
+                panelMobile.classList.remove('block');
+                panelMobile.classList.add('hidden');
+
+                btnCard.classList.remove(...inactiveBtnClasses);
+                btnCard.classList.add(...activeBtnClasses);
+                btnMobile.classList.remove(...activeBtnClasses);
+                btnMobile.classList.add(...inactiveBtnClasses);
+            }
+        }
+    </script>
+</body></html>

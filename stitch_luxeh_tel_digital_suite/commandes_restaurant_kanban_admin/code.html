@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teranga Admin - Gestion des Commandes Restaurant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#766143",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f2f0f0",
+                        "primary-container": "#1a2b48",
+                        "on-secondary-fixed-variant": "#564428",
+                        "on-primary-fixed-variant": "#374765",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d7e2ff",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-fixed": "#fbdeb9",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#b6c7eb",
+                        "surface-bright": "#fbf9f8",
+                        "on-secondary-fixed": "#271903",
+                        "background": "#fbf9f8",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e4e2e2",
+                        "surface-dim": "#dbd9d9",
+                        "outline-variant": "#c5c6ce",
+                        "tertiary": "#171714",
+                        "outline": "#75777e",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "on-primary-container": "#8293b5",
+                        "secondary-fixed-dim": "#dec29f",
+                        "on-error-container": "#93000a",
+                        "primary": "#031632",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "secondary": "#705b3e",
+                        "tertiary-container": "#2b2b28",
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "inverse-surface": "#303030",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#fbdeb9",
+                        "surface": "#fbf9f8",
+                        "surface-container-highest": "#e4e2e2",
+                        "surface-container": "#efeded",
+                        "on-primary-fixed": "#081b38",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-low": "#f5f3f3",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-surface-variant": "#44474d",
+                        "surface-tint": "#4e5f7e",
+                        "on-background": "#1b1c1c",
+                        "on-tertiary-container": "#93928e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #303030; /* Dark background matching inverse-surface */
+            color: #f2f0f0; /* Light text matching inverse-on-surface */
+        }
+        .kanban-column {
+            min-height: calc(100vh - 200px);
+        }
+        .kanban-card {
+            cursor: grab;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .kanban-card:active {
+            cursor: grabbing;
+            transform: scale(0.98);
+        }
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a2b48;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8293b5;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b6c7eb;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-hidden flex h-screen">
+<!-- SideNavBar -->
+<nav class="bg-primary dark:bg-primary text-inverse-primary font-body-md text-body-md h-screen w-64 flex-col fixed left-0 top-0 border-r border-white/10 shadow-xl flex py-6 px-4 z-50">
+<div class="mb-8">
+<h1 class="font-headline-md text-headline-md text-on-primary">Teranga Admin</h1>
+<p class="font-label-sm text-label-sm text-inverse-primary/70 mt-1">Property Management</p>
+</div>
+<div class="flex items-center gap-3 mb-8 bg-white/5 p-3 rounded-xl border border-white/10">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A professional headshot of an African woman in a tailored business suit, softly lit against a dark, minimalist background. The style is highly polished, reflecting a premium hospitality setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsNwZFht3m5UqwEgqix1OkdWnI6md2pbc1iVNV0y7pAtWYLja0O9PxbKMy8rMrCI0fvRZh2UA6NHcE1cfOMysMsrI88a7i1gVjTlAx1kJwlnVErA2Ar37s-vPSVzU2zM2PFA8SA_80Eepa9ikkHNAntXAxGqVAtvWcvMnKpcHLtJiOXJDl9TK9fUChERWy7UnU1NjqcGw2rrnPGIXKMWxIJO29CFyawvSea5fO9G80gLbcuddDikX0"/>
+<div>
+<p class="font-label-sm text-label-sm font-semibold text-on-primary">Admin User Profile</p>
+<p class="font-label-sm text-label-sm text-inverse-primary/70">Restaurant Manager</p>
+</div>
+</div>
+<button class="bg-secondary-container text-on-secondary-container font-label-sm text-label-sm py-3 px-4 rounded-full mb-8 hover:bg-secondary-fixed transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+            New Booking
+        </button>
+<ul class="flex flex-col gap-2 flex-grow">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container/70 hover:text-on-primary mx-2 hover:bg-primary-container/50 transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container/70 hover:text-on-primary mx-2 hover:bg-primary-container/50 transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+                    Bookings
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container/70 hover:text-on-primary mx-2 hover:bg-primary-container/50 transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined" data-icon="bed">bed</span>
+                    Inventory
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg mx-2 duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant" data-weight="fill" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+                    Kitchen
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container/70 hover:text-on-primary mx-2 hover:bg-primary-container/50 transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+                    Analytics
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container/70 hover:text-on-primary mx-2 hover:bg-primary-container/50 transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+<div class="mt-auto pt-6 border-t border-white/10">
+<ul class="flex flex-col gap-2">
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-primary-container/70 hover:text-on-primary mx-2 hover:bg-primary-container/50 transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                        Support
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-primary-container/70 hover:text-on-primary mx-2 hover:bg-primary-container/50 transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                        Logout
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 h-screen flex flex-col bg-inverse-surface">
+<!-- Header area -->
+<header class="px-margin-desktop py-8 border-b border-white/5 bg-primary/20 backdrop-blur-md flex justify-between items-end shrink-0">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-inverse-on-surface mb-2 tracking-tight">Gestion des Commandes</h2>
+<p class="font-body-md text-body-md text-on-primary-container">Restaurant Teranga - Vue Kanban</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-primary-container">search</span>
+<input class="bg-primary-container/50 border border-white/10 rounded-full pl-10 pr-4 py-2 text-inverse-on-surface focus:outline-none focus:border-secondary-container focus:ring-1 focus:ring-secondary-container font-label-sm text-label-sm placeholder:text-on-primary-container w-64 transition-all" placeholder="Rechercher une commande..." type="text"/>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary-container border border-white/10 flex items-center justify-center text-on-primary-container hover:text-inverse-primary hover:border-white/20 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+</div>
+</header>
+<!-- Kanban Board -->
+<div class="flex-1 overflow-x-auto overflow-y-hidden px-8 py-8 flex gap-6 pb-margin-desktop">
+<!-- Column: En attente -->
+<div class="flex-shrink-0 w-80 flex flex-col bg-primary-container/20 rounded-2xl border border-white/5 p-4 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none"></div>
+<div class="flex justify-between items-center mb-6 relative z-10">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<h3 class="font-label-sm text-label-sm uppercase text-inverse-primary tracking-wider">En attente</h3>
+</div>
+<span class="bg-primary-container text-on-primary-container font-label-sm text-[10px] px-2 py-0.5 rounded-full">3</span>
+</div>
+<div class="flex-1 overflow-y-auto pr-2 space-y-4 kanban-column relative z-10">
+<!-- Card 1 -->
+<div class="kanban-card bg-primary-container rounded-xl p-4 border border-white/10 hover:border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+<div class="flex justify-between items-start mb-3">
+<span class="font-label-sm text-label-sm bg-surface-tint/20 text-inverse-primary px-2 py-1 rounded">Chambre 412</span>
+<span class="font-label-sm text-label-sm text-on-primary-container">19:45</span>
+</div>
+<h4 class="font-body-md text-body-md text-inverse-on-surface font-semibold mb-1">M. Diallo</h4>
+<div class="my-4 border-l-2 border-secondary-container/50 pl-3">
+<ul class="font-label-sm text-label-sm text-on-primary-container space-y-1">
+<li>2x Thieboudienne (Poisson)</li>
+<li>1x Jus de Bissap</li>
+<li>1x Eau Minérale (Plate)</li>
+</ul>
+</div>
+<div class="flex justify-between items-center mt-4 pt-4 border-t border-white/5">
+<span class="font-label-sm text-label-sm text-on-primary-container">Total</span>
+<span class="font-body-md text-body-md font-semibold text-secondary-fixed">24 500 FCFA</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="kanban-card bg-primary-container rounded-xl p-4 border border-white/10 hover:border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+<div class="flex justify-between items-start mb-3">
+<span class="font-label-sm text-label-sm bg-surface-tint/20 text-inverse-primary px-2 py-1 rounded">Chambre 204</span>
+<span class="font-label-sm text-label-sm text-on-primary-container">19:50</span>
+</div>
+<h4 class="font-body-md text-body-md text-inverse-on-surface font-semibold mb-1">Mme. Ndiaye</h4>
+<div class="my-4 border-l-2 border-secondary-container/50 pl-3">
+<ul class="font-label-sm text-label-sm text-on-primary-container space-y-1">
+<li>1x Yassa Poulet</li>
+<li>1x Salade Tropicale</li>
+<li>2x Jus de Bouye</li>
+</ul>
+</div>
+<div class="flex justify-between items-center mt-4 pt-4 border-t border-white/5">
+<span class="font-label-sm text-label-sm text-on-primary-container">Total</span>
+<span class="font-body-md text-body-md font-semibold text-secondary-fixed">18 000 FCFA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Confirmé -->
+<div class="flex-shrink-0 w-80 flex flex-col bg-primary-container/20 rounded-2xl border border-white/5 p-4 relative overflow-hidden">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-fixed-dim"></span>
+<h3 class="font-label-sm text-label-sm uppercase text-inverse-primary tracking-wider">Confirmé</h3>
+</div>
+<span class="bg-primary-container text-on-primary-container font-label-sm text-[10px] px-2 py-0.5 rounded-full">1</span>
+</div>
+<div class="flex-1 overflow-y-auto pr-2 space-y-4 kanban-column">
+<!-- Card 3 -->
+<div class="kanban-card bg-primary-container rounded-xl p-4 border border-white/10 hover:border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.2)]">
+<div class="flex justify-between items-start mb-3">
+<span class="font-label-sm text-label-sm bg-surface-tint/20 text-inverse-primary px-2 py-1 rounded">Table 12</span>
+<span class="font-label-sm text-label-sm text-on-primary-container">19:30</span>
+</div>
+<h4 class="font-body-md text-body-md text-inverse-on-surface font-semibold mb-1">Client Sur Place</h4>
+<div class="my-4 border-l-2 border-secondary-container/50 pl-3">
+<ul class="font-label-sm text-label-sm text-on-primary-container space-y-1">
+<li>3x Mafé Boeuf</li>
+<li>1x Plateau de Fruits</li>
+</ul>
+</div>
+<div class="flex justify-between items-center mt-4 pt-4 border-t border-white/5">
+<span class="font-label-sm text-label-sm text-on-primary-container">Total</span>
+<span class="font-body-md text-body-md font-semibold text-secondary-fixed">32 000 FCFA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: En préparation -->
+<div class="flex-shrink-0 w-80 flex flex-col bg-primary-container/30 rounded-2xl border border-white/5 p-4 relative overflow-hidden">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<h3 class="font-label-sm text-label-sm uppercase text-inverse-primary tracking-wider">En préparation</h3>
+</div>
+<span class="bg-primary-container text-on-primary-container font-label-sm text-[10px] px-2 py-0.5 rounded-full">2</span>
+</div>
+<div class="flex-1 overflow-y-auto pr-2 space-y-4 kanban-column">
+<!-- Card 4 -->
+<div class="kanban-card bg-primary-container rounded-xl p-4 border border-secondary/30 hover:border-secondary/60 shadow-[0_8px_32px_rgba(112,91,62,0.1)] relative">
+<!-- Progress indicator line -->
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary-container/20 rounded-t-xl overflow-hidden">
+<div class="h-full bg-secondary w-2/3 animate-pulse"></div>
+</div>
+<div class="flex justify-between items-start mb-3 mt-1">
+<span class="font-label-sm text-label-sm bg-surface-tint/20 text-inverse-primary px-2 py-1 rounded">Chambre 501</span>
+<span class="font-label-sm text-label-sm text-on-primary-container">19:15</span>
+</div>
+<h4 class="font-body-md text-body-md text-inverse-on-surface font-semibold mb-1">Famille Sow (VIP)</h4>
+<div class="my-4 border-l-2 border-secondary-container/50 pl-3">
+<ul class="font-label-sm text-label-sm text-on-primary-container space-y-1">
+<li>2x Grillades Mixtes</li>
+<li>2x Thieboudienne (Viande)</li>
+<li>4x Cocktails Sans Alcool</li>
+</ul>
+</div>
+<div class="flex justify-between items-center mt-4 pt-4 border-t border-white/5">
+<span class="font-label-sm text-label-sm text-on-primary-container">Total</span>
+<span class="font-body-md text-body-md font-semibold text-secondary-fixed">65 000 FCFA</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Column: Prêt -->
+<div class="flex-shrink-0 w-80 flex flex-col bg-primary-container/20 rounded-2xl border border-white/5 p-4 relative overflow-hidden">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-surface-tint"></span>
+<h3 class="font-label-sm text-label-sm uppercase text-inverse-primary tracking-wider">Prêt</h3>
+</div>
+<span class="bg-primary-container text-on-primary-container font-label-sm text-[10px] px-2 py-0.5 rounded-full">0</span>
+</div>
+<div class="flex-1 overflow-y-auto pr-2 space-y-4 kanban-column flex flex-col items-center justify-center border-2 border-dashed border-white/5 rounded-xl mx-2">
+<p class="font-label-sm text-label-sm text-on-primary-container/50 text-center">Glisser une commande ici<br/>lorsqu'elle est prête</p>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple drag and drop visual feedback logic (placeholder for actual functionality)
+        document.querySelectorAll('.kanban-card').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.opacity = '0.7';
+                card.style.transform = 'scale(0.98) rotate(-1deg)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.opacity = '1';
+                card.style.transform = 'none';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.opacity = '1';
+                card.style.transform = 'none';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Suivi de commande - Teranga</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#1a2b48",
+                    "inverse-on-surface": "#f2f0f0",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e4e2e2",
+                    "background": "#fbf9f8",
+                    "on-background": "#1b1c1c",
+                    "surface-dim": "#dbd9d9",
+                    "outline-variant": "#c5c6ce",
+                    "primary-fixed-dim": "#b6c7eb",
+                    "secondary": "#705b3e",
+                    "secondary-fixed-dim": "#dec29f",
+                    "on-tertiary-container": "#93928e",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#b6c7eb",
+                    "outline": "#75777e",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#eae8e7",
+                    "secondary-fixed": "#fbdeb9",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#766143",
+                    "tertiary-fixed": "#e5e2dd",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#271903",
+                    "surface-container-low": "#f5f3f3",
+                    "on-primary-container": "#8293b5",
+                    "on-primary-fixed-variant": "#374765",
+                    "surface": "#fbf9f8",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "on-primary-fixed": "#081b38",
+                    "secondary-container": "#fbdeb9",
+                    "on-secondary-fixed-variant": "#564428",
+                    "tertiary-container": "#2b2b28",
+                    "on-surface": "#1b1c1c",
+                    "surface-container-highest": "#e4e2e2",
+                    "primary": "#031632",
+                    "tertiary-fixed-dim": "#c9c6c2",
+                    "surface-tint": "#4e5f7e",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#303030",
+                    "tertiary": "#171714",
+                    "surface-container": "#efeded",
+                    "primary-fixed": "#d7e2ff",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#fbf9f8",
+                    "on-surface-variant": "#44474d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-md": [
+                            "Playfair Display"
+                    ],
+                    "headline-lg-mobile": [
+                            "Playfair Display"
+                    ],
+                    "headline-lg": [
+                            "Playfair Display"
+                    ],
+                    "display-lg": [
+                            "Playfair Display"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "label-sm": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-md": [
+                            "28px",
+                            {
+                                    "lineHeight": "36px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg": [
+                            "40px",
+                            {
+                                    "lineHeight": "48px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg": [
+                            "64px",
+                            {
+                                    "lineHeight": "72px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom Animations for "En préparation" state */
+        @keyframes subtle-bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        .animate-subtle-bounce {
+            animation: subtle-bounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        .animate-pulse-ring::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid theme('colors.secondary');
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col">
+<!-- Task-Focused Header (Navigation Shell Suppressed) -->
+<header class="sticky top-0 z-50 bg-background/90 backdrop-blur-md px-margin-mobile py-4 flex items-center justify-between border-b border-outline-variant/10">
+<button aria-label="Retour" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-low hover:bg-surface-variant transition-colors text-primary">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">Suivi de commande</h1>
+<div class="w-10 h-10"></div> <!-- Spacer for centering -->
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 w-full max-w-md mx-auto px-margin-mobile py-6 flex flex-col gap-10">
+<!-- Order Identification -->
+<section class="text-center flex flex-col items-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-[0.1em] mb-1">Commande</span>
+<h2 class="font-display-lg text-display-lg text-primary tracking-tighter">#4429</h2>
+<div class="mt-4 inline-flex items-center gap-2 bg-secondary-container/50 px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-[16px] text-on-secondary-container">schedule</span>
+<span class="font-label-sm text-label-sm text-on-secondary-container">Arrivée estimée : 20:30</span>
+</div>
+</section>
+<!-- Vertical Timeline -->
+<section class="relative pl-6">
+<!-- Continuous Line Background -->
+<div class="absolute left-[35px] top-4 bottom-8 w-[2px] bg-outline-variant/20 rounded-full"></div>
+<!-- Active Line Fill (Progress) -->
+<div class="absolute left-[35px] top-4 h-[45%] w-[2px] bg-primary rounded-full"></div>
+<div class="flex flex-col gap-8">
+<!-- Step 1: Reçue -->
+<div class="relative flex items-start gap-5">
+<div class="relative z-10 w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-sm shrink-0 mt-1">
+<span class="material-symbols-outlined text-[16px] text-on-primary" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<div class="flex-1">
+<h3 class="font-body-lg text-body-lg text-primary font-semibold">Reçue</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">19:45</p>
+</div>
+</div>
+<!-- Step 2: Confirmée -->
+<div class="relative flex items-start gap-5">
+<div class="relative z-10 w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-sm shrink-0 mt-1">
+<span class="material-symbols-outlined text-[16px] text-on-primary" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+<div class="flex-1">
+<h3 class="font-body-lg text-body-lg text-primary font-semibold">Confirmée</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">19:50</p>
+</div>
+</div>
+<!-- Step 3: En préparation (Current State) -->
+<div class="relative flex items-start gap-5">
+<div class="relative z-10 w-8 h-8 rounded-full bg-secondary-container border-2 border-secondary flex items-center justify-center shrink-0 mt-1 animate-pulse-ring">
+<div class="w-3 h-3 bg-secondary rounded-full"></div>
+</div>
+<div class="flex-1 bg-surface rounded-xl p-4 shadow-[0_8px_24px_rgba(3,22,50,0.04)] border border-surface-variant/50 -mt-2">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-full bg-secondary-container/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary animate-subtle-bounce" style="font-variation-settings: 'FILL' 1;">skillet</span>
+</div>
+<h3 class="font-body-lg text-body-lg text-secondary font-semibold">En préparation</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Nos chefs élaborent votre commande avec le plus grand soin. Les saveurs mijotent.</p>
+</div>
+</div>
+<!-- Step 4: Livraison -->
+<div class="relative flex items-start gap-5">
+<div class="relative z-10 w-8 h-8 rounded-full bg-surface border-2 border-outline-variant/40 flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-[16px] text-outline-variant">directions_bike</span>
+</div>
+<div class="flex-1 opacity-50">
+<h3 class="font-body-lg text-body-lg text-on-surface-variant font-medium">Livraison</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">En attente</p>
+</div>
+</div>
+<!-- Step 5: Livrée -->
+<div class="relative flex items-start gap-5">
+<div class="relative z-10 w-8 h-8 rounded-full bg-surface border-2 border-outline-variant/40 flex items-center justify-center shrink-0 mt-1">
+<span class="material-symbols-outlined text-[16px] text-outline-variant">home</span>
+</div>
+<div class="flex-1 opacity-50">
+<h3 class="font-body-lg text-body-lg text-on-surface-variant font-medium">Livrée</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">En attente</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Order Details Section -->
+<section class="mt-4">
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Détail des articles</h3>
+<div class="flex flex-col gap-3">
+<!-- Item 1 -->
+<div class="flex items-center gap-4 bg-surface p-3 rounded-xl border border-surface-variant/30">
+<img class="w-16 h-16 rounded-lg object-cover shadow-sm" data-alt="A beautifully plated West African Thieboudienne, featuring rich, terracotta-colored broken rice, a perfectly seared piece of fresh grouper, and vibrant vegetables like carrots and cassava. The presentation is modern and elevated, placed on an artisan matte ceramic plate against a warm, earthy wooden table setting. Soft, natural, moody lighting highlights the rich textures and culinary craftsmanship, embodying a contemporary heritage luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuwZxSzj3abzy95ZaOVM7F4NXofzT3Se9fYP3x6LzGBrg0fMCVjI6ISqGvt4O9wl9L9AboAgqCXqJsPaJLhW_EJsU8tOWNfhV9AA7LPEeqqV_20UA2Z9wRBY1MA1lDD0uRm4Mv7r1orF0gDkVa7igQokYsKDOwtZcW32-gXRPdMw21We9eTvSATbRVaXci1OvNfWdMxFheUood4IS5fs2h_yx4nAmSYZ4cCdZy26o5huwayymeTs9i"/>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md font-semibold text-on-background">Thiéboudienne Royal</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Sans piment</p>
+</div>
+<div class="text-right">
+<div class="font-body-md text-body-md text-primary font-semibold">12 500 CFA</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-1">x1</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-4 bg-surface p-3 rounded-xl border border-surface-variant/30">
+<img class="w-16 h-16 rounded-lg object-cover shadow-sm" data-alt="A refreshing, vibrant glass of Bissap (hibiscus juice) infused with mint. The deep, rich ruby red liquid is served in a tall, elegant, modern crystal glass with delicate condensation on the outside. A sprig of fresh green mint rests on top. The background is a soft, blurred minimalist setting with warm beige tones, lit by gentle, diffused sunlight to convey a premium, refreshing hospitality experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk9gKFJU1j2fspl7kwEfyD0ordYIY2USJ5oExKiTV1x6lZ8FJS_QpvXPGx68efO7X13Jf61AZJvjufQq_PbSIMMNxpaiV0UMfDJhraiTcZ8O54d0-8UCL_98ovo2quaFE6kqKhgsuZZI69GEzwo8ucoFjI32eNqntyH9kJQJDK8Vo1gASN44ygU0O1LJqikyZ0qNsnArjZv8huo_0W1zMXfzh_xaGZbmyZmpjIDn7lIiThbEuthbfE"/>
+<div class="flex-1">
+<h4 class="font-body-md text-body-md font-semibold text-on-background">Jus de Bissap Menthe</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">Frais</p>
+</div>
+<div class="text-right">
+<div class="font-body-md text-body-md text-primary font-semibold">2 500 CFA</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-1">x2</div>
+</div>
+</div>
+</div>
+<!-- Total -->
+<div class="mt-6 pt-4 border-t border-outline-variant/20 flex items-center justify-between">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Total</span>
+<span class="font-headline-md text-headline-md text-primary">17 500 CFA</span>
+</div>
+</section>
+</main>
+</body></html>

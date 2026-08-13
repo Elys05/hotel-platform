@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teranga Hotels - Réservation Confirmée</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "on-secondary-fixed-variant": "#564428",
+                        "surface-dim": "#dbd9d9",
+                        "outline": "#75777e",
+                        "surface-container-low": "#f5f3f3",
+                        "surface-tint": "#4e5f7e",
+                        "secondary-fixed": "#fbdeb9",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fbf9f8",
+                        "surface-container-highest": "#e4e2e2",
+                        "primary": "#031632",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#271903",
+                        "surface-variant": "#e4e2e2",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "on-background": "#1b1c1c",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-container": "#fbdeb9",
+                        "inverse-primary": "#b6c7eb",
+                        "tertiary": "#171714",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "primary-container": "#1a2b48",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#fbf9f8",
+                        "secondary": "#705b3e",
+                        "on-surface-variant": "#44474d",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#766143",
+                        "on-primary-container": "#8293b5",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-tertiary-container": "#93928e",
+                        "secondary-fixed-dim": "#dec29f",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-primary-fixed-variant": "#374765",
+                        "primary-fixed": "#d7e2ff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#2b2b28",
+                        "on-primary-fixed": "#081b38",
+                        "on-surface": "#1b1c1c",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "surface": "#fbf9f8",
+                        "surface-container": "#efeded",
+                        "outline-variant": "#c5c6ce"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Playfair Display"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen font-body-md flex flex-col items-center pt-24 pb-24 px-margin-mobile md:px-margin-desktop">
+<!-- Header Navigation (Simplified for transactional page) -->
+<header class="w-full top-0 fixed bg-surface/80 backdrop-blur-md shadow-sm z-50">
+<div class="flex justify-center items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<span class="font-headline-md text-headline-md text-primary tracking-tight">Teranga Hotels</span>
+</div>
+</header>
+<main class="w-full max-w-[800px] mx-auto mt-12 flex flex-col items-center">
+<!-- Success Animation / Icon -->
+<div class="w-24 h-24 rounded-full bg-secondary-container flex items-center justify-center mb-8 relative">
+<div class="absolute inset-0 rounded-full border-4 border-secondary-fixed opacity-50 animate-ping"></div>
+<span class="material-symbols-outlined text-on-secondary-container" style="font-size: 48px; font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- Heading & Booking Ref -->
+<div class="text-center mb-12">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4">Réservation Confirmée !</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Merci d'avoir choisi Teranga Hotels. Votre numéro de réservation est le</p>
+<p class="font-headline-md text-headline-md text-secondary mt-2">#TR-8829</p>
+</div>
+<!-- Summary Card (Glassmorphism / Ambient Shadow) -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-[0_24px_48px_rgba(3,22,50,0.05)] border border-surface-container-high overflow-hidden mb-12 flex flex-col md:flex-row">
+<!-- Room Image -->
+<div class="w-full md:w-2/5 h-64 md:h-auto relative">
+<img class="w-full h-full object-cover absolute inset-0" data-alt="A luxurious hotel room interior in a contemporary West African style. Warm earth tones, high-quality linen on a large bed, subtle wooden textures, and soft natural sunlight filtering through sheer curtains. The mood is elegant, serene, and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrlUnxwDpB7dKi8UPF-6dvlQEzEP-uho4a6-2tqM2N36gGYrAv8VUk1wWsKACBsiq0aR0z98gef6_mFE8g1iMfuGB6ziilCAOm4-CWbNArsWg5eMfTArmS34otBYjyabU4c7X5kEQZgZttg6eDYLZUyWaQG6ktYrS4_yZh68X16ACS53vI5T72HvoLGfmKQXp4tILExsY4oJEpyDzMNwhtzZv4LJUYtn-ATr6dxMQf0oDWUjgagbPQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-secondary-fixed/90 text-on-secondary-fixed px-3 py-1 rounded-full font-label-sm text-label-sm backdrop-blur-sm shadow-sm">Suite Présidentielle</span>
+</div>
+</div>
+<!-- Details -->
+<div class="w-full md:w-3/5 p-8 flex flex-col gap-6">
+<!-- Dates -->
+<div class="flex flex-col gap-4">
+<div class="flex justify-between items-center border-b border-surface-variant pb-4">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">ARRIVÉE</span>
+<span class="font-body-lg text-body-lg text-primary">12 Oct 2024</span>
+<span class="text-sm text-on-surface-variant">À partir de 15:00</span>
+</div>
+<div class="w-px h-12 bg-surface-variant mx-4"></div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">DÉPART</span>
+<span class="font-body-lg text-body-lg text-primary">15 Oct 2024</span>
+<span class="text-sm text-on-surface-variant">Avant 12:00</span>
+</div>
+</div>
+</div>
+<!-- Location -->
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary mt-1">location_on</span>
+<div>
+<h3 class="font-body-lg text-body-lg text-primary font-medium">Teranga Resort, Dakar</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Route de la Corniche Ouest, Dakar, Sénégal</p>
+</div>
+</div>
+<!-- Guests -->
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary mt-1">person</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface-variant">2 Adultes, 1 Enfant</p>
+</div>
+</div>
+<!-- Total -->
+<div class="mt-auto pt-4 border-t border-surface-variant flex justify-between items-center">
+<span class="font-body-lg text-body-lg text-on-surface-variant">Montant Total</span>
+<span class="font-headline-md text-headline-md text-primary">1 250 €</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
+<button class="px-8 py-4 border-2 border-secondary text-secondary rounded-lg font-label-sm text-label-sm tracking-widest uppercase hover:bg-secondary/5 transition-colors duration-300 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 20px;">download</span>
+                Télécharger la facture
+            </button>
+<button class="px-8 py-4 bg-primary text-on-primary rounded-lg font-label-sm text-label-sm tracking-widest uppercase hover:bg-primary-container transition-colors duration-300 shadow-md">
+                Voir mes réservations
+            </button>
+</div>
+</main>
+<!-- Footer Component (From JSON) -->
+<footer class="bg-surface-container-low w-full mt-20 border-t border-outline-variant/20 px-margin-desktop py-12 flex flex-col items-center gap-6">
+<span class="font-headline-md text-headline-md text-primary">Teranga Hotels</span>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">Sustainability</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">Contact Us</a>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-80">© 2024 Teranga Hospitality Group. All rights reserved.</span>
+</footer>
+</body></html>

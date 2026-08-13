@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profil Client - Teranga Hotels</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#1a2b48",
+                        "inverse-on-surface": "#f2f0f0",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e4e2e2",
+                        "background": "#fbf9f8",
+                        "on-background": "#1b1c1c",
+                        "surface-dim": "#dbd9d9",
+                        "outline-variant": "#c5c6ce",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "secondary": "#705b3e",
+                        "secondary-fixed-dim": "#dec29f",
+                        "on-tertiary-container": "#93928e",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#b6c7eb",
+                        "outline": "#75777e",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-fixed": "#fbdeb9",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#766143",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#271903",
+                        "surface-container-low": "#f5f3f3",
+                        "on-primary-container": "#8293b5",
+                        "on-primary-fixed-variant": "#374765",
+                        "surface": "#fbf9f8",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "on-primary-fixed": "#081b38",
+                        "secondary-container": "#fbdeb9",
+                        "on-secondary-fixed-variant": "#564428",
+                        "tertiary-container": "#2b2b28",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-highest": "#e4e2e2",
+                        "primary": "#031632",
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "surface-tint": "#4e5f7e",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#303030",
+                        "tertiary": "#171714",
+                        "surface-container": "#efeded",
+                        "primary-fixed": "#d7e2ff",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#fbf9f8",
+                        "on-surface-variant": "#44474d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "fontWeight": "700" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .glass-panel { background: rgba(251, 249, 248, 0.7); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+        .shadow-ambient { box-shadow: 0 12px 48px -12px rgba(3, 22, 50, 0.08); }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky bg-surface/80 backdrop-blur-md dark:bg-primary-container/90 shadow-sm dark:shadow-none z-50 transition-all duration-300">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md text-primary dark:text-inverse-primary tracking-tight">
+                Teranga Hotels
+            </div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300" href="#">Rooms</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300" href="#">Restaurant</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300" href="#">Wellness</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-inverse-primary transition-colors duration-300" href="#">Offers</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant/30 rounded-full text-body-md focus:border-primary focus:ring-0 w-48 transition-all" placeholder="Search..." type="text"/>
+</div>
+<button class="font-label-sm text-label-sm border border-secondary text-primary px-6 py-2 rounded-full hover:bg-secondary/5 transition-colors">Sign In</button>
+<button class="font-label-sm text-label-sm bg-primary text-on-primary px-6 py-2 rounded-full hover:bg-primary/90 transition-colors">Book Now</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-desktop py-12 md:py-24 flex flex-col gap-16">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row gap-8 items-start md:items-end justify-between border-b border-outline-variant/20 pb-8">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-2">Profil Client</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Gérez vos informations et consultez votre historique.</p>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low p-4 rounded-xl shadow-ambient">
+<div class="w-16 h-16 rounded-full overflow-hidden border-2 border-surface-container-highest">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A close up portrait of an elegant traveler standing in a warmly lit, luxurious West African hotel lobby. The scene is bright and airy with beige tones and a sense of calm sophistication. High-end lifestyle photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDr3tE69Exd8sV4BKKopfXB-cJMtSyl5uJkFwyY4XBpX_W2iHYenIYiA6YccF0Mo3q083GWQpnvG6S8TwjQf47pzefefpYy4yAB7IssbCcTO-3-7CYX1mG7HqVChOKtieczk2DI3fVTzO-3SnhFDVITyLYl2M0u-9neCp_Ok8vgzedjNj8A4KHf-eFe3dvs6kkbNwyfWex1dcRYJrcIRJRfFgJ0nRY2_Si2Sa6Aj-31ejJ-_vKXhMig"/>
+</div>
+<div>
+<p class="font-body-md text-body-md font-semibold text-primary">Amadou Fall</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Membre depuis 2021</p>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Personal Info & Security -->
+<div class="lg:col-span-4 flex flex-col gap-8">
+<!-- Personal Info Form -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl shadow-ambient">
+<h2 class="font-headline-md text-headline-md text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+                        Informations Personnelles
+                    </h2>
+<form class="flex flex-col gap-6">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Nom complet</label>
+<input class="bg-transparent border-b border-outline-variant/50 focus:border-primary px-0 py-2 font-body-md text-body-md text-primary focus:ring-0 transition-colors" type="text" value="Amadou Fall"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Email</label>
+<input class="bg-transparent border-b border-outline-variant/50 focus:border-primary px-0 py-2 font-body-md text-body-md text-primary focus:ring-0 transition-colors" type="email" value="amadou.fall@example.com"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Téléphone</label>
+<input class="bg-transparent border-b border-outline-variant/50 focus:border-primary px-0 py-2 font-body-md text-body-md text-primary focus:ring-0 transition-colors" type="tel" value="+221 77 123 45 67"/>
+</div>
+<button class="mt-4 w-full bg-primary text-on-primary font-label-sm text-label-sm py-3 rounded-full hover:bg-primary/90 transition-colors" type="button">
+                            Enregistrer les modifications
+                        </button>
+</form>
+</div>
+<!-- Security / Password -->
+<div class="bg-surface-container-low p-8 rounded-2xl border border-outline-variant/20">
+<h2 class="font-headline-md text-headline-md text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+                        Sécurité
+                    </h2>
+<form class="flex flex-col gap-6">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Nouveau mot de passe</label>
+<input class="bg-surface-container-lowest border border-outline-variant/50 rounded-lg focus:border-primary px-3 py-2 font-body-md text-body-md text-primary focus:ring-0 transition-colors" placeholder="••••••••" type="password"/>
+</div>
+<button class="w-full border border-secondary text-primary font-label-sm text-label-sm py-3 rounded-full hover:bg-secondary/5 transition-colors" type="button">
+                            Mettre à jour
+                        </button>
+</form>
+</div>
+</div>
+<!-- Right Column: History (Stays & Payments) -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- Stay History Bento -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl shadow-ambient">
+<h2 class="font-headline-md text-headline-md text-primary mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="bed">bed</span>
+                        Historique des séjours
+                    </h2>
+<div class="flex flex-col gap-4">
+<!-- Stay Item 1 -->
+<div class="group flex flex-col md:flex-row items-center justify-between p-4 rounded-xl border border-outline-variant/30 hover:bg-surface-container-low transition-colors duration-300">
+<div class="flex items-center gap-6 w-full md:w-auto">
+<div class="w-24 h-16 rounded-lg overflow-hidden shrink-0">
+<img alt="Room Thumbnail" class="w-full h-full object-cover" data-alt="A beautifully styled luxury hotel room with rich beige tones, crisp white linens, and elegant wooden accents. Soft sunlight streams through sheer curtains. Calm and sophisticated interior design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQGmhcM0XiKoxMGOMml0mV2eoXnWNmcfDgyhqyBVRi4RSU8Rn-Yxtg2LiVuMZ9-6koNGsIG6RGSxbogrP7I-ncFA8SP2jxVZjxXISf4Mew03dsRWllE3LCKL66zJ6JO2u0f6VqFC1ESaaklO2Lupxdt-HjXzlEY8d_29SrTnGc52sYUXgpVXEb5L-WUTpfXQczjCpOjxRp0XGmr8JWFd4hWrSRChczsk1wU3f5oHrJYy68wfTFDKde"/>
+</div>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-primary font-semibold">Suite Océan</span>
+<span class="font-body-md text-body-md text-on-surface-variant">12 - 15 Oct, 2023</span>
+</div>
+</div>
+<div class="flex items-center justify-between w-full md:w-auto mt-4 md:mt-0 gap-8">
+<span class="font-body-md text-body-md font-medium text-primary">850,000 CFA</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded-full">Terminé</span>
+</div>
+</div>
+<!-- Stay Item 2 -->
+<div class="group flex flex-col md:flex-row items-center justify-between p-4 rounded-xl border border-outline-variant/30 hover:bg-surface-container-low transition-colors duration-300">
+<div class="flex items-center gap-6 w-full md:w-auto">
+<div class="w-24 h-16 rounded-lg overflow-hidden shrink-0">
+<img alt="Room Thumbnail" class="w-full h-full object-cover" data-alt="A minimalist, modern hotel room featuring warm earth tones, tactile textures, and subtle luxury details. A plush bed is centered against a textured wall. Serene atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWOCtD_Mib5zC9Nb8XX1PWCnlZVuMUkBEXYcH3PxNoDwNoxnsXvauidM01lLIuiY2ZnZPmH0cuowKZkQsbg90Lum5BRd708dZRgo-j-t0U_ucd1VsnoMrMraso_S7cK1buInozWe17YBMoi7wQrytnoGgUQnvun6HSDJC1gGJn8pwovSohmPW3aajrzgbokH2mh7T5mkKtChO2WAJ1cHPWtA7aAh6TAh4OagMLkgKP9_HwcWin0tQm"/>
+</div>
+<div class="flex flex-col">
+<span class="font-body-lg text-body-lg text-primary font-semibold">Chambre Deluxe</span>
+<span class="font-body-md text-body-md text-on-surface-variant">05 - 08 Aoû, 2023</span>
+</div>
+</div>
+<div class="flex items-center justify-between w-full md:w-auto mt-4 md:mt-0 gap-8">
+<span class="font-body-md text-body-md font-medium text-primary">420,000 CFA</span>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded-full">Terminé</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Payment History -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl shadow-ambient">
+<h2 class="font-headline-md text-headline-md text-primary mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+                        Historique des paiements
+                    </h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/30">
+<th class="py-3 font-label-sm text-label-sm text-on-surface-variant font-medium">Date</th>
+<th class="py-3 font-label-sm text-label-sm text-on-surface-variant font-medium">Description</th>
+<th class="py-3 font-label-sm text-label-sm text-on-surface-variant font-medium">Montant</th>
+<th class="py-3 font-label-sm text-label-sm text-on-surface-variant font-medium text-right">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors">
+<td class="py-4 font-body-md text-body-md text-primary">15 Oct 2023</td>
+<td class="py-4 font-body-md text-body-md text-primary">Séjour - Suite Océan</td>
+<td class="py-4 font-body-md text-body-md font-medium text-primary">850,000 CFA</td>
+<td class="py-4 text-right">
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary hover:underline" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="download">download</span>
+                                            Facture
+                                        </a>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors">
+<td class="py-4 font-body-md text-body-md text-primary">08 Aoû 2023</td>
+<td class="py-4 font-body-md text-body-md text-primary">Séjour - Chambre Deluxe</td>
+<td class="py-4 font-body-md text-body-md font-medium text-primary">420,000 CFA</td>
+<td class="py-4 text-right">
+<a class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary hover:underline" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="download">download</span>
+                                            Facture
+                                        </a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-20 bg-surface-container-low dark:bg-primary-container border-t border-outline-variant/20 px-margin-desktop py-12 flex flex-col items-center gap-6">
+<div class="font-headline-md text-headline-md text-primary dark:text-inverse-primary">Teranga Hotels</div>
+<div class="flex gap-6 font-label-sm text-label-sm">
+<a class="text-on-surface-variant opacity-80 hover:opacity-100 hover:underline transition-opacity" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant opacity-80 hover:opacity-100 hover:underline transition-opacity" href="#">Terms of Service</a>
+<a class="text-on-surface-variant opacity-80 hover:opacity-100 hover:underline transition-opacity" href="#">Sustainability</a>
+<a class="text-on-surface-variant opacity-80 hover:opacity-100 hover:underline transition-opacity" href="#">Contact Us</a>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Teranga Hospitality Group. All rights reserved.</div>
+</footer>
+</body></html>

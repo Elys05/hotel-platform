@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teranga Admin - Gestion du Restaurant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#dbd9d9",
+                        "on-secondary-fixed": "#271903",
+                        "secondary-fixed": "#fbdeb9",
+                        "surface-tint": "#4e5f7e",
+                        "surface-container-high": "#eae8e7",
+                        "tertiary-fixed": "#e5e2dd",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#8293b5",
+                        "outline-variant": "#c5c6ce",
+                        "primary": "#031632",
+                        "primary-container": "#1a2b48",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "surface-bright": "#fbf9f8",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#44474d",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "inverse-surface": "#303030",
+                        "surface-container": "#efeded",
+                        "on-secondary-fixed-variant": "#564428",
+                        "secondary": "#705b3e",
+                        "secondary-container": "#fbdeb9",
+                        "tertiary-container": "#2b2b28",
+                        "background": "#fbf9f8",
+                        "on-primary-fixed": "#081b38",
+                        "tertiary": "#171714",
+                        "secondary-fixed-dim": "#dec29f",
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "on-tertiary-container": "#93928e",
+                        "on-surface": "#1b1c1c",
+                        "on-background": "#1b1c1c",
+                        "primary-fixed": "#d7e2ff",
+                        "on-primary-fixed-variant": "#374765",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#fbf9f8",
+                        "surface-container-highest": "#e4e2e2",
+                        "outline": "#75777e",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f5f3f3",
+                        "inverse-primary": "#b6c7eb",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e4e2e2",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "on-secondary-container": "#766143",
+                        "inverse-on-surface": "#f2f0f0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #303030; /* inverse-surface for dark mode admin */
+            color: #ffffff; /* on-inverse-surface */
+        }
+        /* Custom toggle switch styles for dark mode */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #b6c7eb; /* inverse-primary */
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #b6c7eb; /* inverse-primary */
+        }
+        .toggle-checkbox:checked + .toggle-label:before {
+            transform: translateX(100%);
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden antialiased">
+<!-- SideNavBar (Shared Component) -->
+<aside class="h-screen w-64 flex-col fixed left-0 top-0 border-r border-white/10 shadow-xl bg-primary dark:bg-primary flex py-6 px-4 z-50">
+<div class="font-headline-md text-headline-md text-on-primary mb-8 tracking-tight">Teranga Admin</div>
+<div class="mb-8 px-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden">
+<img alt="Admin User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a luxury hotel admin staff member in an elegant dark uniform. Warm studio lighting, minimalist dark background. Contemporary premium hospitality aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBP3FxEHfwCFLz50j_L4fdSLRZB_ULQ61smivkGmgHn9HvK2fb3olrFRjtbkHmgSl_F7m5wiH2dg4x6nLSNktH5sZsfLXfMRuCEMRhy9snIPjXMvJsc9m8-vff2prx6n_XQ5qqvCiMe1GWsD1JQGVG5sPk5BZCZx_W_AmhN1mAGMD0Q1SmIowbdLCqyO-z-NleFTjLFfO6InkCiWOAAUKByDjMEVZfQn69bfTHk70jRsHfVGDAROH2D"/>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-inverse-primary">Property Management</div>
+</div>
+</div>
+<button class="mb-8 mx-2 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded-lg py-3 px-4 flex items-center justify-center gap-2 hover:bg-secondary transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+            New Booking
+        </button>
+<nav class="flex-1 flex flex-col gap-2 overflow-y-auto">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 transition-colors duration-200 ease-linear mx-2 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 transition-colors duration-200 ease-linear mx-2 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+                Bookings
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 transition-colors duration-200 ease-linear mx-2 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">bed</span>
+                Inventory
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary-container text-on-primary-container mx-2 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+                Kitchen
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 transition-colors duration-200 ease-linear mx-2 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 transition-colors duration-200 ease-linear mx-2 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto pt-4 border-t border-white/10 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 transition-colors duration-200 ease-linear mx-2 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">help</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 transition-colors duration-200 ease-linear mx-2 font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 flex flex-col h-screen overflow-hidden bg-[#1e1e1e]"> <!-- Slightly lighter dark background for main canvas -->
+<!-- Header -->
+<header class="h-20 border-b border-white/10 flex items-center justify-between px-margin-desktop shrink-0 bg-[#242424]">
+<h1 class="font-headline-md text-headline-md text-white">Gestion du Restaurant</h1>
+<button class="bg-secondary-container text-on-secondary-container font-label-sm text-label-sm rounded-full py-2 px-6 flex items-center gap-2 hover:bg-secondary-fixed-dim transition-colors shadow-lg">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Ajouter un plat
+            </button>
+</header>
+<!-- Two Column Layout -->
+<div class="flex-1 flex overflow-hidden">
+<!-- Left Column: Categories -->
+<div class="w-72 border-r border-white/10 bg-[#242424] overflow-y-auto shrink-0 p-6">
+<h2 class="font-label-sm text-label-sm text-outline-variant mb-4 uppercase tracking-widest">Catégories</h2>
+<nav class="flex flex-col gap-2">
+<button class="flex items-center justify-between px-4 py-3 rounded-lg bg-primary/40 border border-primary-fixed-dim/30 text-inverse-primary font-body-md text-body-md text-left transition-all">
+<span>Entrées</span>
+<span class="text-xs bg-primary-container px-2 py-0.5 rounded-full">12</span>
+</button>
+<button class="flex items-center justify-between px-4 py-3 rounded-lg text-outline-variant hover:bg-white/5 hover:text-white font-body-md text-body-md text-left transition-all border border-transparent">
+<span>Plats</span>
+<span class="text-xs bg-white/10 px-2 py-0.5 rounded-full">24</span>
+</button>
+<button class="flex items-center justify-between px-4 py-3 rounded-lg text-outline-variant hover:bg-white/5 hover:text-white font-body-md text-body-md text-left transition-all border border-transparent">
+<span>Boissons</span>
+<span class="text-xs bg-white/10 px-2 py-0.5 rounded-full">18</span>
+</button>
+<button class="flex items-center justify-between px-4 py-3 rounded-lg text-outline-variant hover:bg-white/5 hover:text-white font-body-md text-body-md text-left transition-all border border-transparent">
+<span>Desserts</span>
+<span class="text-xs bg-white/10 px-2 py-0.5 rounded-full">8</span>
+</button>
+</nav>
+</div>
+<!-- Right Column: Menu Grid -->
+<div class="flex-1 overflow-y-auto p-margin-desktop bg-[#1e1e1e]">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-body-lg text-body-lg text-white">Entrées (12)</h2>
+<div class="flex gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-[20px]">search</span>
+<input class="bg-[#242424] border border-white/10 rounded-full py-2 pl-10 pr-4 text-white font-body-md text-body-md focus:outline-none focus:border-primary-fixed-dim focus:ring-1 focus:ring-primary-fixed-dim w-64 placeholder-outline-variant" placeholder="Rechercher..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Dish Card 1 -->
+<div class="bg-[#242424] border border-white/5 rounded-xl p-4 flex gap-4 hover:border-white/10 transition-all shadow-sm group">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-[#303030]">
+<img alt="Plat" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A top-down macro shot of a beautifully plated West African appetizer. Vibrant orange and green garnishes on a dark slate plate. Cinematic lighting, rich colors, dark luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_nYezpn9dRaS_DyVTRp6sCxvDSyE5qpwQxiH3iZgrQtI2mBoWvvcoOpl0aG2B7C9VXk4N58v5N-5pxHfUtov1mje6FBlofL9HwCpjQi-vlOsmAyC9ouxhvxagh71bxjUxFwt9eroA0FpG5ngEp9VdBgy2uhsKaodF3VK2yCt76s9JjBNOgT2e7Sejh4z2b9d8T9kCtphAZDkgwV4qm15IJ4k9Bp6yzBkdWOluXpPDCletMDVZNyXl"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-white mb-1 line-clamp-1">Accras de Niébé</h3>
+<p class="font-body-md text-body-md text-outline-variant text-sm line-clamp-2">Beignets traditionnels aux épices douces, sauce tamarin.</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="font-label-sm text-label-sm text-secondary-fixed-dim">4 500 FCFA</span>
+<!-- Toggle -->
+<label class="flex items-center cursor-pointer relative">
+<input checked="" class="sr-only toggle-checkbox" type="checkbox"/>
+<div class="toggle-label block w-10 h-6 rounded-full bg-primary-fixed-dim transition-colors duration-300 relative">
+<div class="absolute left-1 top-1 bg-primary w-4 h-4 rounded-full transition-transform duration-300 transform translate-x-4"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Dish Card 2 -->
+<div class="bg-[#242424] border border-white/5 rounded-xl p-4 flex gap-4 hover:border-white/10 transition-all shadow-sm group">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-[#303030]">
+<img alt="Plat" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An elegant, modern bowl of creamy soup with a drizzle of herb oil and toasted seeds. Dark ceramic bowl on a dark rustic wooden table. Soft moody lighting, high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWK0Z9_xEa7OQyDHqvvRPFcKwTBR4vG8dtzgK0BhafPUdTkvvlyyghtzwljVP0c0SHgcqFG_al9YPh-B4oow1r_x2VXYVFwHTXXvS-iz9MIUyqlcETs_PjPBfNMcchBKZ4jOT_lmDGiIxoDQ7c-XRLJdSFdT5smD2YsH17xRMiJHcyg_BnP3s4MNk5UIilY81Gw5P-AcfpKusyzAi4fueHO273AMfxkw6hKwo3dSZMElsXZvsSbRcD"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-white mb-1 line-clamp-1">Velouté de Ndolè</h3>
+<p class="font-body-md text-body-md text-outline-variant text-sm line-clamp-2">Crème onctueuse d'arachides et feuilles amères.</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="font-label-sm text-label-sm text-secondary-fixed-dim">5 000 FCFA</span>
+<label class="flex items-center cursor-pointer relative">
+<input checked="" class="sr-only toggle-checkbox" type="checkbox"/>
+<div class="toggle-label block w-10 h-6 rounded-full bg-primary-fixed-dim transition-colors duration-300 relative">
+<div class="absolute left-1 top-1 bg-primary w-4 h-4 rounded-full transition-transform duration-300 transform translate-x-4"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Dish Card 3 (Inactive) -->
+<div class="bg-[#242424] border border-white/5 rounded-xl p-4 flex gap-4 hover:border-white/10 transition-all shadow-sm group opacity-60 grayscale-[50%]">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-[#303030]">
+<img alt="Plat" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A minimalist presentation of grilled plantain slices with a spicy dip on a dark rectangular plate. Studio lighting, dark background, premium dining atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2B6Bm_e5pgKoqweMuh2shzsqnVyOd9v3g8pxq7W9zdetQfXn7WN_t-gVoHc3ByWf1NysUqzLkx2DrDg2tCh3yGVxW-w5waKVQPbl73Bh_PF9064CbJbv3YG1xEwJH_0Tka4VE6GDkM_QGEbgF6GHTJYU7rV4QC3qyRUh-1ahewV-T031gHRGiq4kuzqIo7Aih_AyfNyDXZtmRjKx498ZEZyT_QlNx9gEfTuI0jSAoe_7GTPk8jCXK"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-white mb-1 line-clamp-1">Alloco Royal</h3>
+<p class="font-body-md text-body-md text-outline-variant text-sm line-clamp-2">Dés de bananes plantains frites, piment doux.</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<span class="font-label-sm text-label-sm text-outline-variant line-through">3 500 FCFA</span>
+<label class="flex items-center cursor-pointer relative">
+<input class="sr-only toggle-checkbox" type="checkbox"/>
+<div class="block w-10 h-6 rounded-full bg-white/20 transition-colors duration-300 relative">
+<div class="absolute left-1 top-1 bg-outline-variant w-4 h-4 rounded-full transition-transform duration-300"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Simple script to handle toggle visual changes without framework
+        document.querySelectorAll('.toggle-checkbox').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const card = this.closest('.group');
+                const priceLabel = card.querySelector('.text-secondary-fixed-dim, .line-through');
+                const toggleBg = this.nextElementSibling;
+                const toggleKnob = toggleBg.firstElementChild;
+                
+                if (this.checked) {
+                    card.classList.remove('opacity-60', 'grayscale-[50%]');
+                    priceLabel.classList.remove('text-outline-variant', 'line-through');
+                    priceLabel.classList.add('text-secondary-fixed-dim');
+                    
+                    toggleBg.classList.replace('bg-white/20', 'bg-primary-fixed-dim');
+                    toggleKnob.classList.replace('bg-outline-variant', 'bg-primary');
+                    toggleKnob.classList.add('translate-x-4');
+                } else {
+                    card.classList.add('opacity-60', 'grayscale-[50%]');
+                    priceLabel.classList.remove('text-secondary-fixed-dim');
+                    priceLabel.classList.add('text-outline-variant', 'line-through');
+                    
+                    toggleBg.classList.replace('bg-primary-fixed-dim', 'bg-white/20');
+                    toggleKnob.classList.replace('bg-primary', 'bg-outline-variant');
+                    toggleKnob.classList.remove('translate-x-4');
+                }
+            });
+        });
+    </script>
+</body></html>

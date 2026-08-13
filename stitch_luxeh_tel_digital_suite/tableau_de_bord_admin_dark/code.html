@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teranga Admin - Dashboard Principal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#766143",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f2f0f0",
+                        "primary-container": "#1a2b48",
+                        "on-secondary-fixed-variant": "#564428",
+                        "on-primary-fixed-variant": "#374765",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d7e2ff",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-fixed": "#fbdeb9",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#b6c7eb",
+                        "surface-bright": "#fbf9f8",
+                        "on-secondary-fixed": "#271903",
+                        "background": "#fbf9f8",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e4e2e2",
+                        "surface-dim": "#dbd9d9",
+                        "outline-variant": "#c5c6ce",
+                        "tertiary": "#171714",
+                        "outline": "#75777e",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "on-primary-container": "#8293b5",
+                        "secondary-fixed-dim": "#dec29f",
+                        "on-error-container": "#93000a",
+                        "primary": "#031632",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "secondary": "#705b3e",
+                        "tertiary-container": "#2b2b28",
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "inverse-surface": "#303030",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#fbdeb9",
+                        "surface": "#fbf9f8",
+                        "surface-container-highest": "#e4e2e2",
+                        "surface-container": "#efeded",
+                        "on-primary-fixed": "#081b38",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-low": "#f5f3f3",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-surface-variant": "#44474d",
+                        "surface-tint": "#4e5f7e",
+                        "on-background": "#1b1c1c",
+                        "on-tertiary-container": "#93928e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #1a2b48; /* primary-container */
+            color: #b6c7eb; /* inverse-primary */
+        }
+        
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a2b48;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #374765;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8293b5;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-hidden flex h-screen">
+<!-- SideNavBar (Shared Component) -->
+<nav class="h-screen w-64 flex-col fixed left-0 top-0 border-r border-white/10 shadow-xl bg-primary dark:bg-primary flex py-6 px-4 z-50">
+<!-- Brand Logo & Header -->
+<div class="mb-8 px-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<img alt="Admin User Profile" class="w-6 h-6 object-contain" data-alt="A minimalist, geometric, flat vector logo for a high-end luxury hospitality brand, featuring an abstract interlaced motif reminiscent of West African textiles. Designed in a single flat warm sand color on a transparent background, ensuring a clean, modern, and highly legible appearance suitable for a premium digital dashboard context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj78FYS0Q9P48biMZoqMhvym1WWLd-xd3VzXh6fO3PZ-lwnHAq4EB0Ps_MjdG26RG14EZkU76GPZZm39dXcEBqc9u_db8bXoLfyRaGBugiPtyVdw7kjwsI6Sjb7Tg2_Z0zErWbvEb1FmtNuuVc-2KWu-uC95BtYyQkWCzsTWZLSFSwQwzAZQwSzSRV6t4pOs9dECBPAPaCW4mjK0CBhSbmBNefKj4QSF-PF8UWvPiGEWyqfOO8FsO3"/>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-on-primary text-xl leading-tight">Teranga Admin</h1>
+<p class="font-label-sm text-label-sm text-inverse-primary/70">Property Management</p>
+</div>
+</div>
+<!-- Primary CTA -->
+<button class="w-full mb-8 bg-secondary text-on-secondary font-label-sm text-label-sm py-3 rounded-lg hover:bg-secondary/90 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+            New Booking
+        </button>
+<!-- Navigation Links -->
+<ul class="flex flex-col gap-2 flex-grow">
+<!-- Active Tab -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg mx-2 duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+</li>
+<!-- Inactive Tabs -->
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 mx-2 rounded-lg transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span>Bookings</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 mx-2 rounded-lg transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined">bed</span>
+<span>Inventory</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 mx-2 rounded-lg transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span>Kitchen</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 mx-2 rounded-lg transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span>Analytics</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 mx-2 rounded-lg transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</li>
+</ul>
+<!-- Footer Links -->
+<ul class="flex flex-col gap-2 mt-auto border-t border-white/10 pt-4">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 mx-2 rounded-lg transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary-container/70 hover:text-on-primary hover:bg-primary-container/50 mx-2 rounded-lg transition-colors duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 h-screen overflow-y-auto bg-primary-container p-8">
+<!-- Page Header -->
+<header class="flex justify-between items-center mb-10">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-primary mb-1">Overview</h2>
+<p class="font-body-md text-body-md text-inverse-primary/70">Today's property performance</p>
+</div>
+<!-- Quick Actions / Date Range (Optional, adding for realism) -->
+<div class="flex gap-4">
+<button class="flex items-center gap-2 px-4 py-2 bg-primary border border-outline-variant/30 text-inverse-primary rounded-lg font-label-sm text-label-sm hover:bg-primary-fixed-dim/10 transition-colors">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                    Today, Oct 24
+                    <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</header>
+<!-- Stats Row -->
+<section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-10">
+<!-- Stat Card 1 -->
+<div class="bg-primary rounded-xl p-6 border border-white/10 shadow-lg relative overflow-hidden group hover:border-secondary-container/50 transition-colors">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary-fixed/5 rounded-full blur-xl group-hover:bg-primary-fixed/10 transition-colors"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<p class="font-label-sm text-label-sm text-inverse-primary/70">Clients</p>
+<span class="material-symbols-outlined text-secondary-container">group</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-primary relative z-10">1,240</h3>
+<div class="flex items-center gap-1 mt-2 text-secondary-container relative z-10">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label-sm text-label-sm text-[10px]">+12% this week</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-primary rounded-xl p-6 border border-white/10 shadow-lg relative overflow-hidden group hover:border-secondary-container/50 transition-colors">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary-fixed/5 rounded-full blur-xl group-hover:bg-primary-fixed/10 transition-colors"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<p class="font-label-sm text-label-sm text-inverse-primary/70">Réservations</p>
+<span class="material-symbols-outlined text-secondary-container">event_available</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-primary relative z-10">85</h3>
+<div class="flex items-center gap-1 mt-2 text-secondary-container relative z-10">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label-sm text-label-sm text-[10px]">+5% this week</span>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-primary rounded-xl p-6 border border-white/10 shadow-lg relative overflow-hidden group hover:border-secondary-container/50 transition-colors">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary-fixed/5 rounded-full blur-xl group-hover:bg-primary-fixed/10 transition-colors"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<p class="font-label-sm text-label-sm text-inverse-primary/70">Commandes</p>
+<span class="material-symbols-outlined text-secondary-container">room_service</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-primary relative z-10">12</h3>
+<div class="flex items-center gap-1 mt-2 text-on-primary-container relative z-10">
+<span class="material-symbols-outlined text-sm">trending_flat</span>
+<span class="font-label-sm text-label-sm text-[10px]">Same as yesterday</span>
+</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="bg-primary rounded-xl p-6 border border-white/10 shadow-lg relative overflow-hidden group hover:border-secondary-container/50 transition-colors">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary-fixed/5 rounded-full blur-xl group-hover:bg-primary-fixed/10 transition-colors"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<p class="font-label-sm text-label-sm text-inverse-primary/70">Chambres Libres</p>
+<span class="material-symbols-outlined text-secondary-container">meeting_room</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-primary relative z-10">8</h3>
+<div class="flex items-center gap-1 mt-2 text-error relative z-10">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+<span class="font-label-sm text-label-sm text-[10px]">-2 since morning</span>
+</div>
+</div>
+<!-- Stat Card 5 -->
+<div class="bg-primary rounded-xl p-6 border border-white/10 shadow-lg relative overflow-hidden group hover:border-secondary-container/50 transition-colors">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary-fixed/5 rounded-full blur-xl group-hover:bg-primary-fixed/10 transition-colors"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<p class="font-label-sm text-label-sm text-inverse-primary/70">Revenus</p>
+<span class="material-symbols-outlined text-secondary-container">account_balance_wallet</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-primary relative z-10">12.5M <span class="text-sm font-normal text-inverse-primary/50">FCFA</span></h3>
+<div class="flex items-center gap-1 mt-2 text-secondary-container relative z-10">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label-sm text-label-sm text-[10px]">+18% this month</span>
+</div>
+</div>
+</section>
+<!-- Charts Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+<!-- Revenue Curve Chart Placeholder -->
+<div class="bg-primary rounded-xl p-6 border border-white/10 shadow-lg flex flex-col h-80">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-primary text-lg">Évolution des Revenus</h3>
+<button class="text-inverse-primary/50 hover:text-inverse-primary">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- CSS representation of a line chart for dark mode -->
+<div class="flex-1 relative w-full border-l border-b border-white/10 pb-2 pl-2">
+<div class="absolute bottom-0 left-0 w-full h-full flex items-end">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<!-- Gradient fill -->
+<defs>
+<lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#fbdeb9;stop-opacity:0.4"></stop>
+<stop offset="100%" style="stop-color:#fbdeb9;stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,100 L0,70 Q25,30 50,60 T100,20 L100,100 Z" fill="url(#grad1)"></path>
+<!-- Line -->
+<path d="M0,70 Q25,30 50,60 T100,20" fill="none" stroke="#fbdeb9" stroke-width="2"></path>
+<!-- Data points -->
+<circle cx="25" cy="46" fill="#ffffff" r="2"></circle>
+<circle cx="50" cy="60" fill="#ffffff" r="2"></circle>
+<circle cx="75" cy="40" fill="#ffffff" r="2"></circle>
+<circle cx="100" cy="20" fill="#ffffff" r="2"></circle>
+</svg>
+</div>
+<!-- Axis Labels (Y) -->
+<div class="absolute left-[-30px] top-0 h-full flex flex-col justify-between text-[10px] text-inverse-primary/50 py-2">
+<span>15M</span>
+<span>10M</span>
+<span>5M</span>
+</div>
+<!-- Axis Labels (X) -->
+<div class="absolute bottom-[-20px] left-2 w-full flex justify-between text-[10px] text-inverse-primary/50 px-4">
+<span>Lun</span>
+<span>Mar</span>
+<span>Mer</span>
+<span>Jeu</span>
+<span>Ven</span>
+</div>
+</div>
+</div>
+<!-- Occupancy Bar Chart Placeholder -->
+<div class="bg-primary rounded-xl p-6 border border-white/10 shadow-lg flex flex-col h-80">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-headline-md text-on-primary text-lg">Taux d'Occupation</h3>
+<div class="flex items-center gap-2">
+<span class="flex items-center gap-1 text-[10px] text-inverse-primary/70"><span class="w-2 h-2 rounded-full bg-secondary-container"></span> Occupe</span>
+<span class="flex items-center gap-1 text-[10px] text-inverse-primary/70"><span class="w-2 h-2 rounded-full bg-primary-fixed-dim/20"></span> Libre</span>
+</div>
+</div>
+<!-- CSS representation of a bar chart -->
+<div class="flex-1 w-full flex items-end justify-around border-b border-white/10 pb-2 relative">
+<!-- Y Axis -->
+<div class="absolute left-[-20px] top-0 h-full flex flex-col justify-between text-[10px] text-inverse-primary/50 py-2">
+<span>100%</span>
+<span>50%</span>
+</div>
+<!-- Bars -->
+<div class="w-8 h-full flex flex-col justify-end group">
+<div class="w-full h-[20%] bg-primary-fixed-dim/20 rounded-t-sm group-hover:bg-primary-fixed-dim/30 transition-colors"></div>
+<div class="w-full h-[80%] bg-secondary-container rounded-b-sm"></div>
+<span class="absolute bottom-[-20px] text-[10px] text-inverse-primary/50">S1</span>
+</div>
+<div class="w-8 h-full flex flex-col justify-end group">
+<div class="w-full h-[30%] bg-primary-fixed-dim/20 rounded-t-sm group-hover:bg-primary-fixed-dim/30 transition-colors"></div>
+<div class="w-full h-[70%] bg-secondary-container rounded-b-sm"></div>
+<span class="absolute bottom-[-20px] text-[10px] text-inverse-primary/50">S2</span>
+</div>
+<div class="w-8 h-full flex flex-col justify-end group">
+<div class="w-full h-[15%] bg-primary-fixed-dim/20 rounded-t-sm group-hover:bg-primary-fixed-dim/30 transition-colors"></div>
+<div class="w-full h-[85%] bg-secondary-container rounded-b-sm"></div>
+<span class="absolute bottom-[-20px] text-[10px] text-inverse-primary/50">S3</span>
+</div>
+<div class="w-8 h-full flex flex-col justify-end group">
+<div class="w-full h-[40%] bg-primary-fixed-dim/20 rounded-t-sm group-hover:bg-primary-fixed-dim/30 transition-colors"></div>
+<div class="w-full h-[60%] bg-secondary-container rounded-b-sm"></div>
+<span class="absolute bottom-[-20px] text-[10px] text-inverse-primary/50">S4</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Bookings Table -->
+<section class="bg-primary rounded-xl border border-white/10 shadow-lg overflow-hidden">
+<div class="p-6 border-b border-white/10 flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-primary text-lg">Dernières Réservations</h3>
+<a class="text-secondary-container font-label-sm text-label-sm hover:underline" href="#">Voir tout</a>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-inverse-primary/50 font-label-sm text-label-sm border-b border-white/5">
+<th class="p-4 font-medium pl-6">Client</th>
+<th class="p-4 font-medium">Chambre</th>
+<th class="p-4 font-medium">Arrivée</th>
+<th class="p-4 font-medium">Départ</th>
+<th class="p-4 font-medium">Statut</th>
+<th class="p-4 font-medium text-right pr-6">Action</th>
+</tr>
+</thead>
+<tbody class="text-body-md text-inverse-primary divide-y divide-white/5">
+<!-- Row 1 -->
+<tr class="hover:bg-primary-container/30 transition-colors group">
+<td class="p-4 pl-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 text-secondary-container flex items-center justify-center font-bold text-sm">
+                                    AD
+                                </div>
+<div>
+<p class="text-on-primary font-medium group-hover:text-secondary-container transition-colors">Amadou Diallo</p>
+<p class="text-[10px] text-inverse-primary/50">#RES-2049</p>
+</div>
+</td>
+<td class="p-4">Suite Océan (201)</td>
+<td class="p-4">24 Oct 2024</td>
+<td class="p-4">28 Oct 2024</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[#1a4031] text-[#71deb4]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#71deb4]"></span>
+                                    Confirmé
+                                </span>
+</td>
+<td class="p-4 text-right pr-6">
+<button class="text-inverse-primary/50 hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary-container/30 transition-colors group">
+<td class="p-4 pl-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 text-secondary-container flex items-center justify-center font-bold text-sm">
+                                    FN
+                                </div>
+<div>
+<p class="text-on-primary font-medium group-hover:text-secondary-container transition-colors">Fatou Ndiaye</p>
+<p class="text-[10px] text-inverse-primary/50">#RES-2050</p>
+</div>
+</td>
+<td class="p-4">Chambre Deluxe (104)</td>
+<td class="p-4">25 Oct 2024</td>
+<td class="p-4">27 Oct 2024</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[#4a3f18] text-[#facc15]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#facc15]"></span>
+                                    En attente
+                                </span>
+</td>
+<td class="p-4 text-right pr-6">
+<button class="text-inverse-primary/50 hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary-container/30 transition-colors group">
+<td class="p-4 pl-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 text-secondary-container flex items-center justify-center font-bold text-sm">
+                                    KS
+                                </div>
+<div>
+<p class="text-on-primary font-medium group-hover:text-secondary-container transition-colors">Kwame Sow</p>
+<p class="text-[10px] text-inverse-primary/50">#RES-2051</p>
+</div>
+</td>
+<td class="p-4">Villa Baobab (V02)</td>
+<td class="p-4">26 Oct 2024</td>
+<td class="p-4">02 Nov 2024</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[#1a4031] text-[#71deb4]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#71deb4]"></span>
+                                    Confirmé
+                                </span>
+</td>
+<td class="p-4 text-right pr-6">
+<button class="text-inverse-primary/50 hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-primary-container/30 transition-colors group">
+<td class="p-4 pl-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 text-secondary-container flex items-center justify-center font-bold text-sm">
+                                    AT
+                                </div>
+<div>
+<p class="text-on-primary font-medium group-hover:text-secondary-container transition-colors">Awa Traoré</p>
+<p class="text-[10px] text-inverse-primary/50">#RES-2052</p>
+</div>
+</td>
+<td class="p-4">Chambre Standard (112)</td>
+<td class="p-4">24 Oct 2024</td>
+<td class="p-4">25 Oct 2024</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[#1a4031] text-[#71deb4]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#71deb4]"></span>
+                                    Confirmé
+                                </span>
+</td>
+<td class="p-4 text-right pr-6">
+<button class="text-inverse-primary/50 hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-primary-container/30 transition-colors group">
+<td class="p-4 pl-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 text-secondary-container flex items-center justify-center font-bold text-sm">
+                                    MC
+                                </div>
+<div>
+<p class="text-on-primary font-medium group-hover:text-secondary-container transition-colors">Moussa Camara</p>
+<p class="text-[10px] text-inverse-primary/50">#RES-2053</p>
+</div>
+</td>
+<td class="p-4">Suite Junior (205)</td>
+<td class="p-4">28 Oct 2024</td>
+<td class="p-4">30 Oct 2024</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-[#4a3f18] text-[#facc15]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#facc15]"></span>
+                                    En attente
+                                </span>
+</td>
+<td class="p-4 text-right pr-6">
+<button class="text-inverse-primary/50 hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+</body></html>

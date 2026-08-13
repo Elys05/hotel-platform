@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestion des Chambres - Teranga Admin</title>
+<!-- Google Fonts: Playfair Display & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with specific configuration -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#c9c6c2",
+                    "on-secondary-fixed-variant": "#564428",
+                    "surface-dim": "#dbd9d9",
+                    "outline": "#75777e",
+                    "surface-container-low": "#f5f3f3",
+                    "surface-tint": "#4e5f7e",
+                    "secondary-fixed": "#fbdeb9",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fbf9f8",
+                    "surface-container-highest": "#e4e2e2",
+                    "primary": "#031632",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#271903",
+                    "surface-variant": "#e4e2e2",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "on-background": "#1b1c1c",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#eae8e7",
+                    "secondary-container": "#fbdeb9",
+                    "inverse-primary": "#b6c7eb",
+                    "tertiary": "#171714",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "primary-container": "#1a2b48",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#303030",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#fbf9f8",
+                    "secondary": "#705b3e",
+                    "on-surface-variant": "#44474d",
+                    "error-container": "#ffdad6",
+                    "on-secondary-container": "#766143",
+                    "on-primary-container": "#8293b5",
+                    "inverse-on-surface": "#f2f0f0",
+                    "on-tertiary-container": "#93928e",
+                    "secondary-fixed-dim": "#dec29f",
+                    "tertiary-fixed": "#e5e2dd",
+                    "on-primary-fixed-variant": "#374765",
+                    "primary-fixed": "#d7e2ff",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#2b2b28",
+                    "on-primary-fixed": "#081b38",
+                    "on-surface": "#1b1c1c",
+                    "primary-fixed-dim": "#b6c7eb",
+                    "surface": "#fbf9f8",
+                    "surface-container": "#efeded",
+                    "outline-variant": "#c5c6ce"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px",
+                    "unit": "8px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Playfair Display"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-lg": ["40px", {"lineHeight": "48px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-primary text-on-primary font-body-md text-body-md h-screen flex overflow-hidden">
+<!-- Shared Component: SideNavBar -->
+<nav class="bg-primary dark:bg-primary text-inverse-primary h-screen w-64 flex-col fixed left-0 top-0 border-r border-white/10 shadow-xl flex flex-col py-6 px-4 z-40">
+<div class="mb-12 px-2">
+<h1 class="font-headline-md text-headline-md text-on-primary mb-1 tracking-tight">Teranga Admin</h1>
+<p class="font-label-sm text-label-sm text-inverse-primary/60 uppercase tracking-widest">Property Management</p>
+</div>
+<button class="bg-secondary text-on-secondary rounded-lg py-3 px-4 mb-8 flex items-center justify-center gap-2 hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors shadow-sm">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">add</span>
+<span class="font-label-sm text-label-sm">New Booking</span>
+</button>
+<ul class="flex flex-col gap-2 flex-1">
+<li>
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary-container/70 hover:text-on-primary mx-2 hover:bg-primary-container/50 transition-colors duration-200 ease-linear rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary-container/70 hover:text-on-primary mx-2 hover:bg-primary-container/50 transition-colors duration-200 ease-linear rounded-lg" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span>Bookings</span>
+</a>
+</li>
+<!-- Active Tab: Inventory -->
+<li>
+<a class="flex items-center gap-4 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg mx-2 duration-200 ease-linear" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bed</span>
+<span>Inventory</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary-container/70 hover:text-on-primary mx-2 hover:bg-primary-container/50 transition-colors duration-200 ease-linear rounded-lg" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span>Kitchen</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary-container/70 hover:text-on-primary mx-2 hover:bg-primary-container/50 transition-colors duration-200 ease-linear rounded-lg" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span>Analytics</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-3 text-on-primary-container/70 hover:text-on-primary mx-2 hover:bg-primary-container/50 transition-colors duration-200 ease-linear rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto border-t border-white/10 pt-4">
+<ul class="flex flex-col gap-1">
+<li>
+<a class="flex items-center gap-4 px-4 py-2 text-on-primary-container/70 hover:text-on-primary mx-2 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-4 py-2 text-on-primary-container/70 hover:text-on-primary mx-2 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="font-label-sm text-label-sm">Logout</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 flex flex-col h-screen overflow-y-auto bg-primary">
+<!-- Top Bar / Header -->
+<header class="flex justify-between items-end px-margin-desktop py-12 pb-8 sticky top-0 bg-primary/95 backdrop-blur-md z-30">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-primary tracking-tight">Gestion des Chambres</h2>
+<p class="font-body-md text-body-md text-inverse-primary mt-2">Gérez l'inventaire et les statuts des hébergements.</p>
+</div>
+<button class="bg-secondary-fixed text-on-secondary-fixed hover:bg-secondary-fixed-dim transition-colors px-6 py-3 rounded-lg flex items-center gap-2 font-label-sm text-label-sm shadow-[0_4px_24px_rgba(3,22,50,0.4)]">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Ajouter une chambre
+            </button>
+</header>
+<div class="px-margin-desktop pb-20 flex flex-col gap-6">
+<!-- Filter Bar -->
+<div class="bg-primary-container rounded-xl p-4 flex flex-wrap gap-4 items-center justify-between shadow-sm border border-white/5">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-primary-container">search</span>
+<input class="w-full bg-primary text-on-primary placeholder:text-on-primary-container/50 border border-outline/20 rounded-lg pl-10 pr-4 py-2 font-body-md focus:outline-none focus:border-secondary-fixed focus:ring-1 focus:ring-secondary-fixed transition-all" placeholder="Rechercher (ex: 101, Océan)..." type="text"/>
+</div>
+<div class="h-6 w-px bg-outline/20 mx-2"></div>
+<div class="flex gap-2">
+<select class="bg-primary text-on-primary border border-outline/20 rounded-lg px-4 py-2 font-body-md focus:outline-none focus:border-secondary-fixed appearance-none cursor-pointer">
+<option value="">Tous les Statuts</option>
+<option value="disponible">Disponible</option>
+<option value="occupee">Occupée</option>
+<option value="maintenance">Maintenance</option>
+</select>
+<select class="bg-primary text-on-primary border border-outline/20 rounded-lg px-4 py-2 font-body-md focus:outline-none focus:border-secondary-fixed appearance-none cursor-pointer">
+<option value="">Tous les Types</option>
+<option value="standard">Standard</option>
+<option value="suite">Suite</option>
+<option value="villa">Villa</option>
+</select>
+</div>
+</div>
+<button class="text-inverse-primary hover:text-on-primary flex items-center gap-2 font-label-sm text-label-sm transition-colors px-2">
+<span class="material-symbols-outlined text-[18px]">filter_list_off</span>
+                    Réinitialiser
+                </button>
+</div>
+<!-- Data Table -->
+<div class="bg-primary-container rounded-xl border border-white/5 shadow-2xl overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline/20 text-inverse-primary font-label-sm text-label-sm uppercase tracking-wider bg-primary/50">
+<th class="py-4 px-6 font-semibold w-24">Photo</th>
+<th class="py-4 px-6 font-semibold">Numéro</th>
+<th class="py-4 px-6 font-semibold">Type</th>
+<th class="py-4 px-6 font-semibold">Prix (Nuit)</th>
+<th class="py-4 px-6 font-semibold">Statut</th>
+<th class="py-4 px-6 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline/10">
+<!-- Row 1 -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="py-3 px-6">
+<div class="w-14 h-14 rounded-lg overflow-hidden border border-outline/20">
+<img class="w-full h-full object-cover" data-alt="A close-up shot of a luxurious hotel bed in West Africa, featuring crisp white linens and a decorative mudcloth throw pillow in earthy tones. Warm, soft lighting creates an inviting and premium dark-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfGE-HtboAoKlr-yyZcVsCibTiIno9es8eaI_J-dSPalcXOnjNzfiOAVffeQKkV4KdA1v4x8wTuxBY8MRyafI1RKwOHaN0ydS-w66Rba_wrZqEJqoSU97BY4iimBun_KKQcFFJ0YfuE8r_QbiktyMAU3wsgRBJ8j2Q_PPphC3_sCbQZ5k-cTUhct-Msx4o2N3F1ccse1hknJCPi_MdusyYx2_LsXRf9q6ff2r157Z_7eQNfUxaryGK"/>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="font-headline-md text-[20px] text-on-primary">101</span>
+</td>
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="text-on-primary font-medium">Suite Océan</span>
+<span class="text-inverse-primary text-sm">Vue mer, Balcon</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="font-medium">75 000 FCFA</span>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-fixed/20 text-primary-fixed-dim border border-primary-fixed/30 font-label-sm text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span>
+                                    Disponible
+                                </span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-inverse-primary hover:text-secondary-fixed transition-colors p-2" title="Modifier">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-inverse-primary hover:text-error-container transition-colors p-2" title="Supprimer">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="py-3 px-6">
+<div class="w-14 h-14 rounded-lg overflow-hidden border border-outline/20 bg-surface-tint">
+<img class="w-full h-full object-cover" data-alt="A minimalist modern hotel room interior corner, showcasing a sleek wooden desk and a woven rattan chair against a deep indigo wall. Subtle accent lighting highlights the rich textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMr9nW_q43S_LTMXNH0KEnKOyZJHvy5GsICoQJGDwCvRj5CpdU_Kg8bK4h9hJf8L8f0MORAz73BkLYe3Ni5wourw4VxEAHtbPPaOeSvZvXqlO2RV3sHCt0BzfSmg1Jcs8r-S__CwgZrflQqMVibJfYjpGDwZjT087DBGQ3E4heSBbBuL8jDA5fbRLxYO8dypk-l63C-eS9msWyttjXekmOgCaoUMWf3T7fXaJJ0BJ2y_1KCIHDMOcd"/>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="font-headline-md text-[20px] text-on-primary">102</span>
+</td>
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="text-on-primary font-medium">Chambre Supérieure</span>
+<span class="text-inverse-primary text-sm">Vue jardin</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="font-medium">45 000 FCFA</span>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error/20 text-error-container border border-error/30 font-label-sm text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-error-container"></span>
+                                    Occupée
+                                </span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-inverse-primary hover:text-secondary-fixed transition-colors p-2" title="Modifier">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-inverse-primary hover:text-error-container transition-colors p-2" title="Supprimer">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="py-3 px-6">
+<div class="w-14 h-14 rounded-lg overflow-hidden border border-outline/20">
+<img class="w-full h-full object-cover opacity-60" data-alt="An elegant bathroom interior in a luxury African resort, featuring dark slate tiles, a freestanding oval bathtub, and brushed brass fixtures. The scene is illuminated by moody, dramatic sconce lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiexKEqdmK2p-wGJ4URX3mJ171fSXbYCUcd1jmmUF8-4S3xWZLkrQsNmO2KRcjxt4JuPxILsn2rAWbwmbDYkypIKjkajd67zn7vnzq6Z2YFXqNFMRZBs41QKxtfMfOvbzt6-ae_aBdP7jZEpZVLq4A6J55S2dFqRfNqbfOUwPBd594I7wRS1juAn5dRemKmKiSAVvTxs4pCcyeGZN9YA9pLV9e76hAPPBnzwLHWKg6glsXsyxoRjYk"/>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="font-headline-md text-[20px] text-on-primary">205</span>
+</td>
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="text-on-primary font-medium">Villa Teranga</span>
+<span class="text-inverse-primary text-sm">Piscine privée, 2 Chambres</span>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="font-medium">150 000 FCFA</span>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-fixed-dim/20 text-secondary-fixed border border-secondary-fixed/30 font-label-sm text-[11px]">
+<span class="material-symbols-outlined text-[12px]">build</span>
+                                    Maintenance
+                                </span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-inverse-primary hover:text-secondary-fixed transition-colors p-2" title="Modifier">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="text-inverse-primary hover:text-error-container transition-colors p-2" title="Supprimer">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-white/5 transition-colors group">
+<td class="py-3 px-6">
+<div class="w-14 h-14 rounded-lg overflow-hidden border border-outline/20 bg-tertiary">
+<div class="w-full h-full flex items-center justify-center text-outline/50">
+<span class="material-symbols-outlined text-[24px]">hide_image</span>
+</div>
+</div>
+</td>
+<td class="py-4 px-6">
+<span class="font-headline-md text-[20px] text-outline">301</span>
+</td>
+<td class="py-4 px-6">
+<div class="flex flex-col">
+<span class="text-outline font-medium">Chambre Standard</span>
+<span class="text-outline/70 text-sm">En rénovation</span>
+</div>
+</td>
+<td class="py-4 px-6 text-outline">
+<span class="font-medium">--</span>
+</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-inverse-surface text-outline border border-outline/20 font-label-sm text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                                    Inactive
+                                </span>
+</td>
+<td class="py-4 px-6 text-right">
+<button class="text-outline hover:text-secondary-fixed transition-colors p-2" title="Modifier">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination Footer -->
+<div class="px-6 py-4 border-t border-outline/10 bg-primary-container/50 flex items-center justify-between">
+<span class="text-inverse-primary font-label-sm text-sm">Affichage 1-4 sur 24 chambres</span>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded flex items-center justify-center border border-outline/20 text-inverse-primary hover:bg-white/5 disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded flex items-center justify-center bg-secondary-fixed/10 border border-secondary-fixed/30 text-secondary-fixed font-label-sm">1</button>
+<button class="w-8 h-8 rounded flex items-center justify-center border border-outline/20 text-inverse-primary hover:bg-white/5 font-label-sm">2</button>
+<button class="w-8 h-8 rounded flex items-center justify-center border border-outline/20 text-inverse-primary hover:bg-white/5 font-label-sm">3</button>
+<button class="w-8 h-8 rounded flex items-center justify-center border border-outline/20 text-inverse-primary hover:bg-white/5">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html><html class="light" lang="fr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Teranga Hotels - Page d'accueil</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#766143",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f2f0f0",
+                        "primary-container": "#1a2b48",
+                        "on-secondary-fixed-variant": "#564428",
+                        "on-primary-fixed-variant": "#374765",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d7e2ff",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-fixed": "#fbdeb9",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#b6c7eb",
+                        "surface-bright": "#fbf9f8",
+                        "on-secondary-fixed": "#271903",
+                        "background": "#fbf9f8",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e4e2e2",
+                        "surface-dim": "#dbd9d9",
+                        "outline-variant": "#c5c6ce",
+                        "tertiary": "#171714",
+                        "outline": "#75777e",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "on-primary-container": "#8293b5",
+                        "secondary-fixed-dim": "#dec29f",
+                        "on-error-container": "#93000a",
+                        "primary": "#031632",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "secondary": "#705b3e",
+                        "tertiary-container": "#2b2b28",
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "inverse-surface": "#303030",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#fbdeb9",
+                        "surface": "#fbf9f8",
+                        "surface-container-highest": "#e4e2e2",
+                        "surface-container": "#efeded",
+                        "on-primary-fixed": "#081b38",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-low": "#f5f3f3",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-surface-variant": "#44474d",
+                        "surface-tint": "#4e5f7e",
+                        "on-background": "#1b1c1c",
+                        "on-tertiary-container": "#93928e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-50 bg-surface/80 backdrop-blur-md dark:bg-primary-container/90 shadow-sm dark:shadow-none transition-all duration-300">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto hidden md:flex">
+<a class="font-headline-md text-headline-md text-primary dark:text-inverse-primary tracking-tight" href="#">Teranga Hotels</a>
+<nav class="flex gap-8 items-center">
+<a class="text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Rooms</a>
+<a class="text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Restaurant</a>
+<a class="text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Wellness</a>
+<a class="text-on-surface-variant dark:text-on-primary-container hover:text-primary dark:hover:text-inverse-primary transition-colors font-body-md text-body-md" href="#">Offers</a>
+</nav>
+<div class="flex gap-4 items-center">
+<button class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">Sign In</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-body-md text-body-md hover:bg-primary/90 transition-colors hover:scale-105 hover:brightness-110 transition-transform">Book Now</button>
+</div>
+</div>
+<!-- Mobile Header (Simplified) -->
+<div class="flex md:hidden justify-between items-center w-full px-margin-mobile py-4">
+<a class="font-headline-md text-headline-md text-primary dark:text-inverse-primary tracking-tight" href="#">Teranga Hotels</a>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A breathtaking view of a luxurious resort swimming pool at sunset, overlooking a vast, pristine landscape. The scene features warm, earthy tones blended with sophisticated modern architecture. Subtle textures and organic curves reference traditional craftsmanship. The lighting is soft and inviting, emphasizing a 'Contemporary Heritage' aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7isUUj4Nugf1P9axDx7ovGw8xuvitcWtwWBl31Q5kkV0A-W76UVCz1__-1xdZLnUt1e0-j9nF0oiKZc_JWUWXhd21phnzWJRQMA7YR45IBTmGL-X466to9yrV-OrdS54X9cuEfy_sajG5lFCPQ6cI-V6eApGaDlLl06uhc7kf8ZwuoltDI7tvUPCDCwy61IJpcVUKKSomswTkFaXx_hFNiGuwbKOfkI-C5Lw6tpWAwDP-4Ajp6dP4">
+<div class="absolute inset-0 bg-primary/30 mix-blend-multiply"></div>
+</div>
+<div class="relative z-10 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex flex-col items-center mt-20">
+<h1 class="font-display-lg text-display-lg text-on-primary text-center mb-12 drop-shadow-lg">L'Expérience Teranga</h1>
+<!-- Booking Bar (Glassmorphism) -->
+<div class="w-full max-w-4xl bg-surface/90 backdrop-blur-xl rounded-2xl p-6 shadow-[0_24px_48px_rgba(3,22,50,0.1)] flex flex-col md:flex-row gap-4 items-end border border-white/20">
+<div class="flex-1 w-full relative">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2">Arrivée</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">calendar_today</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface border border-secondary-container rounded-lg focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-surface transition-all duration-300" type="date">
+</div>
+</div>
+<div class="flex-1 w-full relative">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2">Départ</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">calendar_today</span>
+<input class="w-full pl-10 pr-4 py-3 bg-surface border border-secondary-container rounded-lg focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-surface transition-all duration-300" type="date">
+</div>
+</div>
+<div class="flex-1 w-full relative">
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-2">Personnes</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">person</span>
+<select class="w-full pl-10 pr-4 py-3 bg-surface border border-secondary-container rounded-lg focus:ring-2 focus:ring-primary focus:border-primary font-body-md text-body-md text-on-surface appearance-none transition-all duration-300">
+<option>2 Adultes, 0 Enfant</option>
+<option>1 Adulte</option>
+<option>2 Adultes, 1 Enfant</option>
+</select>
+</div>
+</div>
+<button class="w-full md:w-auto bg-primary text-on-primary px-8 py-3.5 rounded-lg font-body-md text-body-md font-semibold hover:bg-primary/90 transition-colors shadow-md hover:scale-105 hover:brightness-110 transition-transform">
+                        Rechercher
+                    </button>
+</div>
+</div>
+</section>
+<!-- Presentation Section -->
+<section class="w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-[120px]">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="order-2 md:order-1 relative rounded-2xl overflow-hidden aspect-[4/5] shadow-[0_24px_48px_rgba(3,22,50,0.08)]">
+<img class="w-full h-full object-cover" data-alt="A meticulously designed hotel lobby interior showcasing West African artisanal woodwork alongside modern, minimalist luxury furniture. The space is bathed in natural light streaming through large windows. The color palette features rich off-whites, warm sands, and deep midnight blue accents, evoking a profound sense of tranquility and exclusivity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgyBzPjEWTbbp7iXawEL9Xn8FVN1pIMT-SZNCKgwoUv7SNxCPS5eCEXr_J_BS5ZXKoq0DEOQYtIVSUcn-BOIvBcdOiLmyfgNPmlyRWTwhsBM2mvKcFGX7AizE1WHmaqgWuadT7jblwLWxXCdgvaUuetqy4gWXzusRFjtIDjEu7ZCcT_hxnmFhzk-EZ6WxmC1f1neY2gkviqjW_3hpfpxvbJld1ZZH4djf4gk_cS_izKOtpwWtiABfF">
+</div>
+<div class="order-1 md:order-2 md:pl-12 flex flex-col gap-6">
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Notre Philosophie</span>
+<h2 class="font-headline-lg md:font-display-lg text-headline-lg-mobile md:text-display-lg text-primary">L'Essence de l'Hospitalité</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        Bienvenue dans un sanctuaire où le luxe contemporain rencontre l'héritage chaleureux de l'Afrique de l'Ouest. Chaque détail de Teranga Hotels a été pensé pour vous offrir une expérience d'une sérénité absolue, alliant design épuré, matériaux nobles et un service dévoué. Découvrez un raffinement tactile et une atmosphère accueillante qui redéfinissent l'art de recevoir.
+                    </p>
+<a class="inline-flex items-center gap-2 font-body-md text-body-md text-primary hover:text-secondary transition-colors underline underline-offset-8 mt-4" href="#">
+                        Découvrir notre histoire <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Rooms Grid (Bento Style) -->
+<section class="w-full bg-surface-container-low py-[120px]">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16 flex flex-col items-center">
+<h2 class="font-headline-lg md:font-display-lg text-headline-lg-mobile md:text-display-lg text-primary mb-4">Séjours d'Exception</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Des espaces conçus pour le repos absolu, offrant des vues imprenables et un confort sans compromis.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Suite Royale (Large) -->
+<div class="md:col-span-8 group rounded-2xl overflow-hidden bg-surface shadow-sm hover:shadow-[0_24px_48px_rgba(3,22,50,0.08)] transition-all duration-500 relative flex flex-col animate-fade-in-up">
+<div class="absolute top-6 left-6 z-10 bg-secondary-container/80 backdrop-blur px-4 py-1.5 rounded-full">
+<span class="font-label-sm text-label-sm text-on-secondary-container">Signature</span>
+</div>
+<div class="h-72 md:h-[400px] w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" data-alt="A vast, luxurious hotel suite featuring a king-size bed with pristine white linens, set against a backdrop of floor-to-ceiling windows offering a panoramic ocean view. The room is styled with minimalist elegance, incorporating tactile textures, warm beige tones, and subtle midnight blue decorative elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM4rALYcAZI_4YjDefm3XHi6ortpeEwaR2XiVFkNSCkFBMpmYTZQJf1ZD-lQLKjA00iGyb0i5aAkauFlh_N78J2U6fml3x7uDgCYqncsrTIVKw4qx8xpLJ3jKIwryg41eJ_5SGGk9_VJf_yyhAaIZWv_N94e8UcX6GocXLBl7URYE_sCNXhbyKmMJKIJYRnqhRsHv0C66O_Tv7nTxGXCpGqGLGhjosOUhZvEvOe2bWHnlEpJ8gGYoc">
+</div>
+<div class="p-8 flex-1 flex flex-col justify-between bg-surface">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Suite Royale</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">L'apogée du luxe avec vue panoramique, espace salon séparé et service de majordome dédié.</p>
+</div>
+<div class="flex justify-between items-end border-t border-outline-variant/30 pt-6">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-1">À partir de</span>
+<span class="font-headline-md text-headline-md text-primary">450 000 FCFA</span><span class="font-body-md text-body-md text-on-surface-variant">/nuit</span>
+</div>
+<button class="h-12 w-12 rounded-full border border-secondary flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-on-secondary transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<!-- Chambre Deluxe -->
+<div class="flex-1 group rounded-2xl overflow-hidden bg-surface shadow-sm hover:shadow-[0_12px_24px_rgba(3,22,50,0.06)] transition-all duration-500 flex flex-col animate-fade-in-up">
+<div class="h-48 w-full overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" data-alt="A serene deluxe hotel room with modern minimalist furniture, soft ambient lighting, and organic textures. The color palette emphasizes off-whites and warm sands, creating a calm, high-end hospitality environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv9D3z6ZFYB4JthOhOH_pTzJrvKJqqqJLcRNrD0xfa5R1JxIGJ-19Xb6_vcMU0sY-KlJQd7DGtrWILb1olFeOe8aWILCdM0F0fqhDFOdDiukYSydJsFnVyVOVDkONQoObspvquqOOySDyHQt8rtlUyK9BTrH0ncfwFZIoWe6VmYJDXk8HZDiRzf6jZalms7NolC41hQp3ZqvqiOy-5UUyT-1sRtid62sKY4UtINqN7wHei_JjCT5R5">
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-body-lg text-body-lg font-semibold text-primary mb-1">Chambre Deluxe</h3>
+</div>
+<div class="flex justify-between items-center mt-4">
+<span class="font-body-md text-body-md text-primary font-semibold">150 000 FCFA</span>
+</div>
+</div>
+</div>
+<!-- Junior Suite -->
+<div class="flex-1 group rounded-2xl overflow-hidden bg-surface shadow-sm hover:shadow-[0_12px_24px_rgba(3,22,50,0.06)] transition-all duration-500 flex flex-col animate-fade-in-up">
+<div class="h-48 w-full overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" data-alt="An elegant junior suite in a luxury resort, featuring a comfortable seating area seamlessly integrated with the sleeping space. The aesthetic blends tactile modernism with subtle West African heritage motifs in a light-mode setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChMpCPF-KB0YqqeoYwoHsZKwlbTegtVQxPJ6iO4k5TmlBO_xRpXg-ahQJsTvir3ALAMPg1P_qhzh1n_U8GavH6bTBHmwo1eLgYDepo-3Fty9jzWI1lgjBEwypwauFQLOfmdr1f4YLad4hpfLf71D1Nn5fyZKV-10A4ujjUk8Tl1BgCIBBNv96wiaMD-p0JJcmgfOEtIaO-C20WbN5Ah0XWkge8TM7QfMz-NVSUf712BRL3eSDyCsjl">
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+<div>
+<h3 class="font-body-lg text-body-lg font-semibold text-primary mb-1">Junior Suite</h3>
+</div>
+<div class="flex justify-between items-center mt-4">
+<span class="font-body-md text-body-md text-primary font-semibold">250 000 FCFA</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Restaurant Section (Asymmetric) -->
+<section class="w-full py-[160px] overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative">
+<!-- Background decorative element -->
+<div class="absolute right-0 top-0 w-[40%] h-[120%] bg-surface-container-low rounded-l-[100px] -z-10"></div>
+<div class="flex flex-col md:flex-row items-center gap-16">
+<div class="md:w-5/12 flex flex-col gap-6 relative z-10">
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Gastronomie</span>
+<h2 class="font-headline-lg md:font-display-lg text-headline-lg-mobile md:text-display-lg text-primary">Saveurs Authentiques</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                            Notre restaurant gastronomique célèbre la richesse des terroirs locaux à travers une cuisine contemporaine raffinée. Dégustez des créations uniques où les épices subtiles rencontrent l'élégance de la haute gastronomie, dans un cadre tamisé et sophistiqué.
+                        </p>
+<button class="self-start mt-4 px-8 py-3 border border-primary text-primary rounded-full font-body-md text-body-md hover:bg-primary hover:text-on-primary transition-colors hover:scale-105 hover:brightness-110 transition-transform">Réserver une table</button>
+</div>
+<div class="md:w-7/12 relative">
+<div class="relative rounded-[2rem] overflow-hidden shadow-[0_48px_64px_rgba(3,22,50,0.1)] z-20 md:ml-12">
+<img class="w-full aspect-[4/3] object-cover" data-alt="A beautifully plated gourmet dish in a high-end restaurant setting. The lighting is focused and warm, highlighting the intricate details of the food. The background softly blurs into an elegant, minimalist dining room with subtle earthy textures and midnight blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaydlZIsx6kQiI7lAC82Cp0mK6CRmF9BDocIG1-4_u4c92pIlpq9iwY2at-p8TN2SQnVSvVRd6iB-_2QGkXUlUs_qWbhxGFaVIw6L28Yq1tzPv41uaIZEnkkYqO5JbLbiJG0MjYVaAUHl50i1NWXv6LHP5zaCG8AwYz3W2W4q9cwYKcsmNdYb96NtMWP5s6xwKOxuX_rhx-dzCTe-dutDoZ9EyfDIrfl-P7CFFszbdRk1QUDUIknc5">
+</div>
+<div class="absolute -bottom-12 -left-12 w-64 h-64 rounded-full overflow-hidden border-8 border-background shadow-lg z-30 hidden md:block">
+<img class="w-full h-full object-cover" data-alt="A close-up of a skilled chef delicately garnishing a plate in a bright, pristine modern kitchen. The aesthetic emphasizes professionalism, cleanliness, and the tactile nature of culinary art within a luxury context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDLEVR5A3aZxHqCgEZ-PDfu6uvBX8drVb4ydndA3b8TAjW5e0lQRbSDq06matK2w2QISEGyQXjGJib3RAvJQWNeWLwkBL3NQSX6Vxl3Q648iWxiCPZt94CrCMh_QbiubAav7rdiTeK2Kggycn9gEnnOzc1j2bJtg52pcNfe0qJIwEw_q2dRs8SNvI-wfF8vxubZiz4JXRX1GnEq3x7U4Um_8u1zmSllklY0lydN7Qh4z1QBsg5uWpa">
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-20 bg-surface-container-low dark:bg-primary-container">
+<div class="w-full px-margin-desktop py-12 flex flex-col items-center gap-6 max-w-container-max mx-auto">
+<h2 class="font-headline-md text-headline-md text-primary dark:text-inverse-primary">Teranga Hotels</h2>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant opacity-80 hover:opacity-100 hover:underline transition-opacity" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant opacity-80 hover:opacity-100 hover:underline transition-opacity" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant opacity-80 hover:opacity-100 hover:underline transition-opacity" href="#">Sustainability</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant opacity-80 hover:opacity-100 hover:underline transition-opacity" href="#">Contact Us</a>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-8">© 2024 Teranga Hospitality Group. All rights reserved.</p>
+</div>
+</footer>
+
+
+</body></html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Teranga Hotels - Accueil</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary": "#ffffff",
+                      "on-secondary-container": "#766143",
+                      "on-tertiary": "#ffffff",
+                      "inverse-on-surface": "#f2f0f0",
+                      "primary-container": "#1a2b48",
+                      "on-secondary-fixed-variant": "#564428",
+                      "on-primary-fixed-variant": "#374765",
+                      "error": "#ba1a1a",
+                      "primary-fixed": "#d7e2ff",
+                      "surface-container-high": "#eae8e7",
+                      "secondary-fixed": "#fbdeb9",
+                      "on-primary": "#ffffff",
+                      "inverse-primary": "#b6c7eb",
+                      "surface-bright": "#fbf9f8",
+                      "on-secondary-fixed": "#271903",
+                      "background": "#fbf9f8",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#e4e2e2",
+                      "surface-dim": "#dbd9d9",
+                      "outline-variant": "#c5c6ce",
+                      "tertiary": "#171714",
+                      "outline": "#75777e",
+                      "primary-fixed-dim": "#b6c7eb",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed": "#1c1c19",
+                      "on-primary-container": "#8293b5",
+                      "secondary-fixed-dim": "#dec29f",
+                      "on-error-container": "#93000a",
+                      "primary": "#031632",
+                      "on-tertiary-fixed-variant": "#474743",
+                      "secondary": "#705b3e",
+                      "tertiary-container": "#2b2b28",
+                      "tertiary-fixed-dim": "#c9c6c2",
+                      "inverse-surface": "#303030",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#fbdeb9",
+                      "surface": "#fbf9f8",
+                      "surface-container-highest": "#e4e2e2",
+                      "surface-container": "#efeded",
+                      "on-primary-fixed": "#081b38",
+                      "on-surface": "#1b1c1c",
+                      "surface-container-low": "#f5f3f3",
+                      "tertiary-fixed": "#e5e2dd",
+                      "on-surface-variant": "#44474d",
+                      "surface-tint": "#4e5f7e",
+                      "on-background": "#1b1c1c",
+                      "on-tertiary-container": "#93928e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "margin-desktop": "64px",
+                      "container-max": "1280px",
+                      "unit": "8px",
+                      "safe": "env(safe-area-inset-bottom)"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "headline-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "48px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "72px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Hide scrollbar for carousels but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        .soft-shadow {
+            box-shadow: 0 4px 24px rgba(3, 22, 50, 0.05);
+        }
+        
+        .glass-panel {
+            background: rgba(251, 249, 248, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        /* Splash Screen Animation */
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        
+        #splash-screen {
+            animation: fadeOut 0.5s ease-in-out 2s forwards;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased font-body-md overflow-x-hidden min-h-screen pb-[90px]">
+<!-- Splash Screen -->
+<div class="fixed inset-0 z-[100] bg-primary flex flex-col items-center justify-center" id="splash-screen">
+<h1 class="font-display-lg text-display-lg text-on-primary tracking-tight mb-4">Teranga</h1>
+<p class="font-body-md text-body-md text-on-primary/80 uppercase tracking-widest text-sm">Hotels &amp; Resorts</p>
+</div>
+<!-- Main Content Container -->
+<main class="w-full h-full relative z-10 md:hidden">
+<!-- Header / Search -->
+<header class="px-margin-mobile pt-12 pb-6 bg-surface z-40 sticky top-0">
+<div class="flex justify-between items-center mb-6">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Bienvenue à</p>
+<h2 class="font-headline-md text-headline-md text-primary tracking-tight">Teranga Dakar</h2>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary soft-shadow overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A close up portrait of an elegant African woman, smiling warmly, with subtle natural makeup, set against a soft, bright out-of-focus modern hotel lobby background with high-key lighting. Contemporary heritage aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_gq4vsBL4NOtuIpHVHB3yyZvjnDtP2cp1B4E1bG2bSQuIrfwpM3r5XKW3SQo97NObCrY4UouS2hhWxp9PQlaCq7A9vc1ZHrOvxtYgZIHSjFHV8oTfWy22hKe-VdmvcO85pY_jFCXK8bbkdMmHTlhVcR94JJ40oBsRK6-kkuueYjXtkDSRyIebiAcNR-x5kjsMcyG30s2x08BO571ptBMPet-iyr6ktnpaUQHGl6D2SDGr2sLcjWdh"/>
+</div>
+</div>
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant z-10" style="font-variation-settings: 'wght' 300;">search</span>
+<input class="w-full pl-12 pr-4 py-4 rounded-xl border border-outline-variant/30 bg-surface-container-low text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors font-body-md text-body-md soft-shadow" placeholder="Rechercher un service..." type="text"/>
+</div>
+</header>
+<!-- Quick Actions Grid (Bento Style) -->
+<section class="px-margin-mobile mb-10">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mb-4">Services Rapides</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Action 1 -->
+<button class="bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-4 flex flex-col items-start gap-3 soft-shadow active:scale-95 transition-transform text-left">
+<div class="w-10 h-10 rounded-full bg-primary-fixed/30 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">room_service</span>
+</div>
+<div>
+<span class="block font-label-sm text-label-sm text-primary mb-1">Room Service</span>
+<span class="block text-[11px] text-on-surface-variant">Commander en chambre</span>
+</div>
+</button>
+<!-- Action 2 -->
+<button class="bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-4 flex flex-col items-start gap-3 soft-shadow active:scale-95 transition-transform text-left">
+<div class="w-10 h-10 rounded-full bg-secondary-container/50 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div>
+<span class="block font-label-sm text-label-sm text-primary mb-1">Spa &amp; Bien-être</span>
+<span class="block text-[11px] text-on-surface-variant">Réserver un soin</span>
+</div>
+</button>
+<!-- Action 3 (Wide) -->
+<button class="col-span-2 bg-primary rounded-xl p-5 flex items-center justify-between shadow-lg shadow-primary/10 active:scale-95 transition-transform text-left relative overflow-hidden">
+<div class="relative z-10">
+<span class="block font-label-sm text-label-sm text-on-primary mb-1">Clé Digitale</span>
+<span class="block text-[11px] text-on-primary/70">Chambre 402</span>
+</div>
+<div class="relative z-10 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-on-primary backdrop-blur-sm border border-white/20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">key</span>
+</div>
+<!-- Decorative element -->
+<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
+</button>
+</div>
+</section>
+<!-- Special Offers Carousel -->
+<section class="mb-12">
+<div class="px-margin-mobile flex justify-between items-end mb-4">
+<h3 class="font-headline-md text-headline-md text-primary text-[22px] leading-[28px]">Offres Spéciales</h3>
+<button class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors pb-1">Voir tout</button>
+</div>
+<div class="flex overflow-x-auto no-scrollbar gap-4 px-margin-mobile pb-6 snap-x snap-mandatory">
+<!-- Offer Card 1 -->
+<div class="min-w-[280px] snap-center rounded-xl overflow-hidden soft-shadow relative">
+<div class="h-48 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A beautifully plated gourmet dinner dish featuring grilled local fish, elegant minimal presentation, on a textured ceramic plate. Warm ambient lighting suggestive of a high-end restaurant evening service. Contemporary heritage aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT66ZW2EUH4gAIa2U8QSQKIvyHCSRkELekiQoeP9FRW2nXKAG-jQs0h2hKrLojFieCdxcPv60V9n_SuTbr_OZFw3wxfh1tMSz-skWunc_TV8QIwMo8sMhJ8hmD5LVnE2yt_cQwALX7JHBGcPVLkFd9IlJRUGfo4ac3zxawC7fec5j5GG3iDYJJlN-Xm1ZuhRLtPpa37DVLHimt2XgX5oXI9tYdqeGX859d-_rqx75oI2OXYZ5_j0dp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
+<div class="absolute top-4 left-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
+<span class="font-label-sm text-label-sm text-primary uppercase text-[10px]">-20%</span>
+</div>
+</div>
+<div class="p-5 bg-surface-container-lowest">
+<h4 class="font-body-lg text-body-lg text-primary font-semibold mb-1">Dîner Dégustation</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mb-4">Découvrez les saveurs locales au restaurant L'Océan.</p>
+<button class="w-full py-3 rounded-lg border border-secondary text-secondary font-label-sm text-label-sm active:bg-secondary-container transition-colors">Réserver</button>
+</div>
+</div>
+<!-- Offer Card 2 -->
+<div class="min-w-[280px] snap-center rounded-xl overflow-hidden soft-shadow relative">
+<div class="h-48 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A serene luxury spa treatment room with warm indirect lighting, massage tables with pristine white linens, subtle African patterned textiles, and smooth stone elements. Tranquil and relaxing mood. Contemporary heritage aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB41bEzlNqRR1ZnOFwJDx7miJTQ_miBuTS4Iit6Junq-fQZmw87f-aTeHIs6M6juXXBFvxd1bpgy64fsWKV-K5CQXZ2EqzFpkmSqdNNNGRk4w1vkXC-63RmHxQi7dzM_in9F8aikYAzOnVgnH0c_es_FKGzKyhEuywVBu9gy6FxNAInyb-dhZ2iN5xP54aKKKfTQ8E-wiVIVFlRSLjaMYFUla1HAsRmi5b65Z4a25pTXYujpwdrvZto"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
+</div>
+<div class="p-5 bg-surface-container-lowest">
+<h4 class="font-body-lg text-body-lg text-primary font-semibold mb-1">Package Détente</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mb-4">Massage 60min et accès privatif au hammam.</p>
+<button class="w-full py-3 rounded-lg border border-secondary text-secondary font-label-sm text-label-sm active:bg-secondary-container transition-colors">Réserver</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Desktop Notice (Hidden on mobile) -->
+<div class="hidden md:flex min-h-screen items-center justify-center p-8 bg-surface-container-low text-center">
+<div class="max-w-md">
+<span class="material-symbols-outlined text-[48px] text-primary mb-4">smartphone</span>
+<h2 class="font-headline-md text-headline-md text-primary mb-2">Expérience Mobile</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Cette interface a été conçue spécifiquement pour les appareils mobiles. Veuillez réduire la taille de votre fenêtre ou utiliser un smartphone pour une expérience optimale.</p>
+</div>
+</div>
+<!-- BottomNavBar (Shared Component implementation) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface/95 dark:bg-inverse-surface/95 border-t border-outline-variant/30 shadow-[0_-4px_24px_rgba(3,22,50,0.08)]">
+<div class="flex justify-around items-center px-margin-mobile py-3 pb-safe">
+<!-- Active Tab (Explore acts as Accueil here) -->
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 transition-transform duration-200 ease-in-out active:scale-95 group">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</button>
+<!-- Inactive Tabs -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-200 ease-in-out active:scale-95 group">
+<span class="material-symbols-outlined mb-1 group-hover:text-primary transition-colors" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm group-hover:text-primary transition-colors">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-200 ease-in-out active:scale-95 group">
+<span class="material-symbols-outlined mb-1 group-hover:text-primary transition-colors" data-icon="bed">bed</span>
+<span class="font-label-sm text-label-sm group-hover:text-primary transition-colors">Stays</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-200 ease-in-out active:scale-95 group">
+<span class="material-symbols-outlined mb-1 group-hover:text-primary transition-colors" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm group-hover:text-primary transition-colors">Profile</span>
+</button>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teranga - Notifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#1a2b48",
+                    "inverse-on-surface": "#f2f0f0",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e4e2e2",
+                    "background": "#fbf9f8",
+                    "on-background": "#1b1c1c",
+                    "surface-dim": "#dbd9d9",
+                    "outline-variant": "#c5c6ce",
+                    "primary-fixed-dim": "#b6c7eb",
+                    "secondary": "#705b3e",
+                    "secondary-fixed-dim": "#dec29f",
+                    "on-tertiary-container": "#93928e",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#b6c7eb",
+                    "outline": "#75777e",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#eae8e7",
+                    "secondary-fixed": "#fbdeb9",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#766143",
+                    "tertiary-fixed": "#e5e2dd",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#271903",
+                    "surface-container-low": "#f5f3f3",
+                    "on-primary-container": "#8293b5",
+                    "on-primary-fixed-variant": "#374765",
+                    "surface": "#fbf9f8",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "on-primary-fixed": "#081b38",
+                    "secondary-container": "#fbdeb9",
+                    "on-secondary-fixed-variant": "#564428",
+                    "tertiary-container": "#2b2b28",
+                    "on-surface": "#1b1c1c",
+                    "surface-container-highest": "#e4e2e2",
+                    "primary": "#031632",
+                    "tertiary-fixed-dim": "#c9c6c2",
+                    "surface-tint": "#4e5f7e",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#303030",
+                    "tertiary": "#171714",
+                    "surface-container": "#efeded",
+                    "primary-fixed": "#d7e2ff",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#fbf9f8",
+                    "on-surface-variant": "#44474d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-md": [
+                            "Playfair Display"
+                    ],
+                    "headline-lg-mobile": [
+                            "Playfair Display"
+                    ],
+                    "headline-lg": [
+                            "Playfair Display"
+                    ],
+                    "display-lg": [
+                            "Playfair Display"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "label-sm": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-md": [
+                            "28px",
+                            {
+                                    "lineHeight": "36px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg": [
+                            "40px",
+                            {
+                                    "lineHeight": "48px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg": [
+                            "64px",
+                            {
+                                    "lineHeight": "72px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-full font-body-md antialiased md:max-w-[480px] md:mx-auto md:shadow-2xl md:border-x border-surface-variant overflow-x-hidden relative">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-background z-40 transition-shadow" id="mainHeader">
+<div class="flex items-center justify-between px-margin-mobile h-16 w-full">
+<button aria-label="Go back" class="text-primary hover:bg-surface-container-high transition-colors p-2 -ml-2 rounded-full active:opacity-70 flex items-center justify-center group">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary font-bold">Teranga</h1>
+<div class="w-10"></div> <!-- Placeholder for balance -->
+</div>
+<div class="px-margin-mobile pb-4">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mt-2">Notifications</h2>
+</div>
+</header>
+<main class="px-margin-mobile pb-32 space-y-4 pt-2">
+<!-- Notification: Promo (Unread) -->
+<article class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_8px_24px_rgba(3,22,50,0.05)] relative overflow-hidden transition-all duration-300 hover:shadow-[0_12px_32px_rgba(3,22,50,0.08)] cursor-pointer group">
+<!-- Unread Indicator -->
+<div aria-label="Unread" class="absolute top-4 right-4 w-2.5 h-2.5 bg-[#4e5f7e] rounded-full"></div>
+<div class="flex items-start gap-4">
+<div class="bg-secondary-container text-on-secondary-container p-3 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="sell" data-weight="fill" style="font-variation-settings: 'FILL' 1;">sell</span>
+</div>
+<div class="flex-1 pr-6">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Offre Spéciale • À l'instant</h3>
+<p class="font-body-md text-body-md text-on-surface font-semibold mb-1">Nouveau : -15% sur votre prochain séjour</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Profitez de notre offre exclusive pour prolonger votre expérience Teranga. Réservez avant le 30 Novembre.</p>
+</div>
+</div>
+</article>
+<!-- Notification: Restaurant (Unread) -->
+<article class="bg-surface-container-lowest rounded-xl p-4 shadow-[0_4px_16px_rgba(3,22,50,0.03)] relative overflow-hidden transition-all duration-300 hover:shadow-[0_12px_32px_rgba(3,22,50,0.08)] cursor-pointer">
+<!-- Unread Indicator -->
+<div aria-label="Unread" class="absolute top-4 right-4 w-2.5 h-2.5 bg-[#4e5f7e] rounded-full"></div>
+<div class="flex items-start gap-4">
+<div class="bg-surface-container-highest text-primary p-3 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="restaurant" data-weight="fill" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div class="flex-1 pr-6">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Commande • Il y a 2h</h3>
+<p class="font-body-md text-body-md text-on-surface font-semibold mb-1">Votre commande est en préparation</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Le Chef prépare actuellement votre Dîner Dégustation. Il vous sera servi en chambre vers 20h30.</p>
+</div>
+</div>
+</article>
+<!-- Notification: Reservation (Read) -->
+<article class="bg-surface-container rounded-xl p-4 opacity-80 relative overflow-hidden transition-all duration-300 cursor-pointer">
+<div class="flex items-start gap-4">
+<div class="bg-surface-variant text-on-surface-variant p-3 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="hotel" data-weight="fill" style="font-variation-settings: 'FILL' 1;">hotel</span>
+</div>
+<div class="flex-1">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Réservation • Hier</h3>
+<p class="font-body-md text-body-md text-on-surface font-semibold mb-1">Confirmation de votre séjour</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Votre Suite Océan est réservée du 12 au 15 Décembre. Nous avons hâte de vous accueillir.</p>
+</div>
+</div>
+</article>
+<!-- Notification: Spa (Read) -->
+<article class="bg-surface-container rounded-xl p-4 opacity-80 relative overflow-hidden transition-all duration-300 cursor-pointer">
+<div class="flex items-start gap-4">
+<div class="bg-surface-variant text-on-surface-variant p-3 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="spa" data-weight="fill" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div class="flex-1">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant mb-1 uppercase tracking-wider">Bien-être • Il y a 3 jours</h3>
+<p class="font-body-md text-body-md text-on-surface font-semibold mb-1">Rappel : Soin Signature</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">N'oubliez pas votre rendez-vous au Spa Teranga demain à 10h00 pour votre massage relaxant.</p>
+</div>
+</div>
+</article>
+</main>
+<!-- BottomNavBar - Hidden here as requested by constraints for Task-focused pages, 
+         Notifications implies a temporary departure, BUT since the prompt asks for a mobile UI and 
+         often these are accessed via bottom nav in some apps, I will suppress it to follow the "Task-Focused" rule. -->
+<script>
+        // Simple scroll shadow for header
+        const header = document.getElementById('mainHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-md', 'bg-surface-container-lowest/90', 'backdrop-blur-md');
+                header.classList.remove('bg-background');
+            } else {
+                header.classList.remove('shadow-md', 'bg-surface-container-lowest/90', 'backdrop-blur-md');
+                header.classList.add('bg-background');
+            }
+        });
+    </script>
+</body></html>
