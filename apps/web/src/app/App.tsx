@@ -1,5 +1,4 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+﻿import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient();
@@ -16,7 +15,7 @@ export function App() {
                 <div className="max-w-md w-full text-center space-y-4 p-8 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl">
                   <h1 className="text-3xl font-bold tracking-tight text-emerald-400">Web OK</h1>
                   <p className="text-slate-400 text-sm">
-                    Plateforme Hôtelière — Application Client Web fonctionnelle.
+                    Plateforme HÃ´teliÃ¨re â€” Application Client Web fonctionnelle.
                   </p>
                 </div>
               </div>
