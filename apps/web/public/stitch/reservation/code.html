@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Teranga Hotels - Booking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "on-secondary-fixed-variant": "#564428",
+                        "surface-dim": "#dbd9d9",
+                        "outline": "#75777e",
+                        "surface-container-low": "#f5f3f3",
+                        "surface-tint": "#4e5f7e",
+                        "secondary-fixed": "#fbdeb9",
+                        "on-tertiary": "#ffffff",
+                        "background": "#fbf9f8",
+                        "surface-container-highest": "#e4e2e2",
+                        "primary": "#031632",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#271903",
+                        "surface-variant": "#e4e2e2",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "on-background": "#1b1c1c",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#eae8e7",
+                        "secondary-container": "#fbdeb9",
+                        "inverse-primary": "#b6c7eb",
+                        "tertiary": "#171714",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "primary-container": "#1a2b48",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#fbf9f8",
+                        "secondary": "#705b3e",
+                        "on-surface-variant": "#44474d",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#766143",
+                        "on-primary-container": "#8293b5",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-tertiary-container": "#93928e",
+                        "secondary-fixed-dim": "#dec29f",
+                        "tertiary-fixed": "#e5e2dd",
+                        "on-primary-fixed-variant": "#374765",
+                        "primary-fixed": "#d7e2ff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#2b2b28",
+                        "on-primary-fixed": "#081b38",
+                        "on-surface": "#1b1c1c",
+                        "primary-fixed-dim": "#b6c7eb",
+                        "surface": "#fbf9f8",
+                        "surface-container": "#efeded",
+                        "outline-variant": "#c5c6ce"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "pb-safe": "env(safe-area-inset-bottom)"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Playfair Display"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "48px", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .step-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+        .step-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased md:hidden pb-[80px]">
+<!-- Top Navigation (Mobile) -->
+<header class="bg-surface/80 backdrop-blur-md sticky top-0 z-40 px-margin-mobile py-4 flex items-center justify-between shadow-sm">
+<button aria-label="Go back" class="text-primary p-2 -ml-2" id="backBtn" style="display: none;">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="font-headline-md text-headline-md text-primary tracking-tight">Teranga Hotels</div>
+<div class="w-10"></div> <!-- Placeholder for balance -->
+</header>
+<!-- Stepper Indicator -->
+<div class="px-margin-mobile py-4 bg-surface border-b border-outline-variant/30 sticky top-[68px] z-30">
+<div class="flex items-center justify-between relative">
+<!-- Progress Line -->
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[2px] bg-surface-container-high -z-10"></div>
+<div class="absolute left-0 top-1/2 -translate-y-1/2 h-[2px] bg-primary-container -z-10 transition-all duration-300" id="progressLine" style="width: 0%;"></div>
+<!-- Steps -->
+<div class="step-indicator flex flex-col items-center gap-1" data-step="1">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-sm text-label-sm transition-colors duration-300">1</div>
+</div>
+<div class="step-indicator flex flex-col items-center gap-1" data-step="2">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm transition-colors duration-300">2</div>
+</div>
+<div class="step-indicator flex flex-col items-center gap-1" data-step="3">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm transition-colors duration-300">3</div>
+</div>
+<div class="step-indicator flex flex-col items-center gap-1" data-step="4">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm transition-colors duration-300">4</div>
+</div>
+</div>
+</div>
+<main class="px-margin-mobile py-6">
+<!-- Step 1: Dates & Guests -->
+<section class="step-content active" id="step1">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-6">Your Stay</h1>
+<div class="space-y-6">
+<!-- Date Picker Mockup -->
+<div class="bg-surface rounded-xl p-4 shadow-[0_4px_24px_rgba(3,22,50,0.04)] border border-outline-variant/20">
+<label class="font-label-sm text-label-sm text-on-surface-variant block mb-2 uppercase">Dates</label>
+<div class="flex items-center justify-between border border-secondary-fixed-dim rounded-lg p-3 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="calendar_month">calendar_month</span>
+<span class="text-on-surface font-body-md">Oct 12 - Oct 15</span>
+</div>
+</div>
+</div>
+<!-- Guests -->
+<div class="bg-surface rounded-xl p-4 shadow-[0_4px_24px_rgba(3,22,50,0.04)] border border-outline-variant/20 space-y-4">
+<label class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Guests</label>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md text-on-surface">Adults</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Ages 13 or above</p>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="Decrease adults" class="w-8 h-8 rounded-full border border-secondary-fixed-dim flex items-center justify-center text-primary"><span class="material-symbols-outlined" data-icon="remove">remove</span></button>
+<span class="font-body-md w-4 text-center">2</span>
+<button aria-label="Increase adults" class="w-8 h-8 rounded-full border border-secondary-fixed-dim flex items-center justify-center text-primary"><span class="material-symbols-outlined" data-icon="add">add</span></button>
+</div>
+</div>
+<hr class="border-outline-variant/20"/>
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md text-on-surface">Children</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Ages 2-12</p>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="Decrease children" class="w-8 h-8 rounded-full border border-secondary-fixed-dim flex items-center justify-center text-primary opacity-50" disabled=""><span class="material-symbols-outlined" data-icon="remove">remove</span></button>
+<span class="font-body-md w-4 text-center">0</span>
+<button aria-label="Increase children" class="w-8 h-8 rounded-full border border-secondary-fixed-dim flex items-center justify-center text-primary"><span class="material-symbols-outlined" data-icon="add">add</span></button>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary font-label-sm text-label-sm uppercase py-4 rounded-xl mt-8 hover:bg-primary transition-colors flex justify-center items-center gap-2" onclick="nextStep(2)">
+                Find Rooms <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</section>
+<!-- Step 2: Room Selection -->
+<section class="step-content" id="step2">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-2">Select a Room</h1>
+<p class="text-on-surface-variant font-body-md mb-6">Oct 12 - Oct 15 • 2 Adults</p>
+<div class="space-y-6">
+<!-- Room Card 1 -->
+<div class="bg-surface rounded-xl overflow-hidden shadow-[0_8px_32px_rgba(3,22,50,0.06)] border border-outline-variant/10">
+<div class="h-48 w-full relative">
+<img class="w-full h-full object-cover" data-alt="A luxurious modern hotel room with warm beige tones, crisp white linens on a large bed, subtle wooden textures, and large windows letting in soft natural light, reflecting a contemporary West African heritage aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2JgKZAHnSBjx0hTdlFBaxdqguSkLKJTKdqqZiT2McbMASTc7tOzqkTq3d2Kt8QHTdFTkrslPObalycxEvf8BiW7CLsZjR4qAJQ1xa_4I3VmETH6pIeCfBEJMtG4H4mssi0eaCW_4364YKNcuOtubpJT2A82CRol_iG1u2XPHuKqAkqk1NKyjfsOpC_-3hMZdPHpFAM48vxgxWDm9DfuhaXVuKcJFf0w0HFSByMjj228s3k2g-27Un"/>
+<div class="absolute top-4 left-4 bg-surface/90 backdrop-blur-sm px-3 py-1 rounded-full font-label-sm text-label-sm text-primary uppercase">Available</div>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-primary text-[22px] leading-tight">Savanna Deluxe</h3>
+<div class="text-right">
+<p class="font-body-md text-on-surface font-semibold">120,000 FCFA</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">/ night</p>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md text-sm">Spacious room with earth-toned decor and a private balcony overlooking the gardens.</p>
+<div class="flex gap-4 text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]" data-icon="square_foot">square_foot</span> 40m²</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]" data-icon="king_bed">king_bed</span> King Bed</span>
+</div>
+<button class="w-full mt-2 border-2 border-secondary-fixed-dim text-primary font-label-sm text-label-sm uppercase py-3 rounded-lg hover:bg-secondary-container/20 transition-colors" onclick="nextStep(3)">Select Room</button>
+</div>
+</div>
+<!-- Room Card 2 -->
+<div class="bg-surface rounded-xl overflow-hidden shadow-[0_8px_32px_rgba(3,22,50,0.06)] border border-outline-variant/10">
+<div class="h-48 w-full relative">
+<img class="w-full h-full object-cover" data-alt="An expansive hotel suite featuring a minimalist design, a plush seating area with earthy orange accents, intricate woven wall art, and ambient warm lighting creating a premium, welcoming atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX-UmDQYioGeotiCj8S3GcDD8pcMrzqARTLpKBTl9X_32U0m7cmvL1xfjcT6HUf8oBgGpW-DNh5JQ6nqiHHlWrd0LGQL8S0t-tC61LKxE9lKUX8fWv439qRfNzabcapHbFKHADJQMNxYzIZtfGr4hIQnexESoAy1p87taJY-mEa55vPB11FaGAAJpEpHkgnNGjhqBZuzX5Uz8ngRhEvSS1VbKA1RhgSJCq-BAXFmlIZ9QV8Rgx4dXv"/>
+<div class="absolute top-4 left-4 bg-secondary-container/90 backdrop-blur-sm px-3 py-1 rounded-full font-label-sm text-label-sm text-on-secondary-container uppercase">Suite</div>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md text-primary text-[22px] leading-tight">Oasis Suite</h3>
+<div class="text-right">
+<p class="font-body-md text-on-surface font-semibold">250,000 FCFA</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">/ night</p>
+</div>
+</div>
+<p class="text-on-surface-variant font-body-md text-sm">Premium suite featuring a separate living area, curated local art, and enhanced amenities.</p>
+<div class="flex gap-4 text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]" data-icon="square_foot">square_foot</span> 75m²</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]" data-icon="king_bed">king_bed</span> King Bed</span>
+</div>
+<button class="w-full mt-2 border-2 border-secondary-fixed-dim text-primary font-label-sm text-label-sm uppercase py-3 rounded-lg hover:bg-secondary-container/20 transition-colors" onclick="nextStep(3)">Select Room</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Step 3: Summary & Payment -->
+<section class="step-content" id="step3">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-6">Review &amp; Pay</h1>
+<div class="space-y-6">
+<!-- Summary Card -->
+<div class="bg-surface rounded-xl p-5 shadow-[0_4px_24px_rgba(3,22,50,0.04)] border border-outline-variant/20">
+<h2 class="font-headline-md text-headline-md text-primary text-[20px] mb-4">Stay Summary</h2>
+<div class="space-y-3 font-body-md text-on-surface">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Room</span>
+<span class="font-semibold">Savanna Deluxe</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Dates</span>
+<span>Oct 12 - Oct 15 (3 nights)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Guests</span>
+<span>2 Adults</span>
+</div>
+</div>
+<hr class="border-outline-variant/20 my-4"/>
+<div class="space-y-2">
+<div class="flex justify-between font-body-md text-on-surface">
+<span>Room Charge (3 nights)</span>
+<span>360,000 FCFA</span>
+</div>
+<div class="flex justify-between font-body-md text-on-surface">
+<span>Taxes &amp; Fees</span>
+<span>18,000 FCFA</span>
+</div>
+</div>
+<hr class="border-outline-variant/20 my-4"/>
+<div class="flex justify-between items-center">
+<span class="font-headline-md text-headline-md text-primary text-[20px]">Total</span>
+<span class="font-headline-md text-headline-md text-primary text-[24px]">378,000 FCFA</span>
+</div>
+</div>
+<!-- Payment Method -->
+<div>
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-3">Payment Method</h3>
+<div class="space-y-3">
+<label class="flex items-center justify-between p-4 bg-surface border-2 border-primary rounded-xl cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="phone_iphone">phone_iphone</span>
+<span class="font-body-md text-primary font-semibold">Mobile Money</span>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+<div class="w-2.5 h-2.5 bg-primary rounded-full"></div>
+</div>
+</label>
+<label class="flex items-center justify-between p-4 bg-surface border border-outline-variant/30 rounded-xl cursor-pointer opacity-70">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="credit_card">credit_card</span>
+<span class="font-body-md text-on-surface-variant">Credit Card</span>
+</div>
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant/50"></div>
+</label>
+</div>
+</div>
+<!-- Mobile Money Details (Mock) -->
+<div class="bg-surface-container-low p-4 rounded-xl space-y-3">
+<label class="font-label-sm text-label-sm text-on-surface-variant block uppercase">Phone Number</label>
+<input class="w-full bg-surface border border-secondary-fixed-dim rounded-lg p-3 focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-on-surface" placeholder="+221 XX XXX XX XX" type="tel"/>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary font-label-sm text-label-sm uppercase py-4 rounded-xl mt-8 hover:bg-primary transition-colors flex justify-center items-center gap-2" onclick="nextStep(4)">
+                Confirm &amp; Pay 378,000 FCFA <span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</button>
+</section>
+<!-- Step 4: Confirmation -->
+<section class="step-content text-center py-10" id="step4">
+<div class="w-20 h-20 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-[40px]" data-icon="done_all">done_all</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-2">Booking Confirmed!</h1>
+<p class="text-on-surface-variant font-body-md mb-8">We look forward to welcoming you.</p>
+<div class="bg-surface rounded-xl p-6 shadow-[0_4px_24px_rgba(3,22,50,0.04)] border border-outline-variant/20 mb-8 inline-block text-left w-full max-w-sm">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-1">Booking Reference</p>
+<p class="font-headline-md text-headline-md text-primary tracking-widest mb-4">TRG-8X42Y</p>
+<hr class="border-outline-variant/20 my-4"/>
+<p class="font-body-md text-on-surface">Oct 12 - Oct 15</p>
+<p class="font-body-md text-on-surface">Savanna Deluxe</p>
+<p class="font-body-md text-on-surface-variant text-sm mt-2">A confirmation email has been sent to you.</p>
+</div>
+<button class="w-full border-2 border-primary text-primary font-label-sm text-label-sm uppercase py-4 rounded-xl hover:bg-primary hover:text-on-primary transition-colors" onclick="resetFlow()">
+                View My Bookings
+            </button>
+</section>
+</main>
+<script>
+        let currentStep = 1;
+
+        function updateStepper(step) {
+            const indicators = document.querySelectorAll('.step-indicator');
+            const progressLine = document.getElementById('progressLine');
+            const backBtn = document.getElementById('backBtn');
+
+            // Update Progress Line width
+            const progressPercentage = ((step - 1) / (indicators.length - 1)) * 100;
+            progressLine.style.width = `${progressPercentage}%`;
+
+            indicators.forEach((indicator, index) => {
+                const stepNum = index + 1;
+                const circle = indicator.querySelector('div');
+                
+                if (stepNum < step) {
+                    // Completed
+                    circle.className = "w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-sm text-label-sm transition-colors duration-300";
+                    circle.innerHTML = '<span class="material-symbols-outlined text-[14px]" data-icon="check">check</span>';
+                } else if (stepNum === step) {
+                    // Active
+                    circle.className = "w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-label-sm text-label-sm transition-colors duration-300 ring-4 ring-primary-container/20";
+                    circle.innerHTML = stepNum;
+                } else {
+                    // Upcoming
+                    circle.className = "w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-sm text-label-sm transition-colors duration-300";
+                    circle.innerHTML = stepNum;
+                }
+            });
+
+            if (step > 1 && step < 4) {
+                backBtn.style.display = 'block';
+                backBtn.onclick = () => nextStep(step - 1);
+            } else {
+                backBtn.style.display = 'none';
+            }
+            
+            // Hide stepper on success
+            const stepperNav = document.querySelector('.sticky.top-\\[68px\\]');
+            if(step === 4) {
+                stepperNav.style.display = 'none';
+            } else {
+                stepperNav.style.display = 'block';
+            }
+        }
+
+        function nextStep(step) {
+            // Hide current
+            const currentSection = document.getElementById(`step${currentStep}`);
+            currentSection.classList.remove('active');
+            
+            // Short timeout to allow CSS transition, though display:none makes it tricky. 
+            // In a real framework, this is handled better.
+            setTimeout(() => {
+                currentStep = step;
+                
+                // Show new
+                const newSection = document.getElementById(`step${currentStep}`);
+                newSection.classList.add('active');
+                
+                updateStepper(currentStep);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 50);
+        }
+
+        function resetFlow() {
+            nextStep(1);
+        }
+
+        // Initialize
+        updateStepper(1);
+    </script>
+</body></html>
